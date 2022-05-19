@@ -1,8 +1,9 @@
-from parser import Parser_Nataly_Futbolki
+from Parser import NatalyParser
+from Parser import config
 from save import Save_Results
 
 if __name__ == '__main__':
-    parser = Parser_Nataly_Futbolki()
+    parser = NatalyParser.Parser_Nataly()
     parser.run()
 
     for block in parser.result:

@@ -7,6 +7,7 @@ from Parser import config
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger('Natali')
 
+# To write the parsed data of one card, the data type is used - a named tuple
 product_category_name = 'Футболки'
 ParseResult = collections.namedtuple(
     product_category_name,
@@ -39,12 +40,15 @@ class Parser_Nataly:
             print('Error')
         return res.text
 
+    # Bringing the text of the downloaded page to BeautyfulSoup
+    # Splitting the page into blocks (cards of a single product)
     def parse_page(self, text: str):
         soup = bs4.BeautifulSoup(text, 'lxml')
         container = soup.select('li.product-card.product-card--with-overlay')
         for block in container:
             self.parse_block(block=block)
 
+    # Parsing of each block (cards of a single product)
     def parse_block(self, block):
         # 1 lvl. 'wrapper' is the entire contents of the block
         wrapper = block.select_one('div.product-card__wrapper')

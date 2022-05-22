@@ -14,6 +14,7 @@ ParseResult = collections.namedtuple(
     (
         'url',
         'goods_name',
+        'article',
         'price',
         'size'
     ),
@@ -33,10 +34,9 @@ class Parser_TDValeriya:
         self.result = []
 
     # Method that loads a page and returns HTML in a text format
-    def load_page(self):
+    def load_page(self, url):
         try:
-            res = self.session.get(url='https://xn--80adfgpq0bk8j.xn--p1ai/products/zhenskij-trikotazh/')
-            #logger.info(res)
+            res = self.session.get(url=url)
             res.raise_for_status()
         except ConnectionError:
             print("Connection refused")
@@ -57,15 +57,41 @@ class Parser_TDValeriya:
         # Get link from attribute href
         link = 'https://xn--80adfgpq0bk8j.xn--p1ai/'+block.get('href')
 
+        # Getting data from the card page
+        res_card_inside = self.load_page(link)
+        soup_card_inside = bs4.BeautifulSoup(res_card_inside, 'lxml')
 
+        # Parsing the name from the inner page of the card
+        name = soup_card_inside.select_one('h2.c-offer_title').get_text().strip()
+        article = soup_card_inside.select_one('div.c-offer_article').get_text().strip().replace('Артикул: ', '')
+        # Parsing prices from the inner page of the card
+        price_mod = soup_card_inside.select_one('div.c-opt.price_mod')
+        price = price_mod.find('span', itemprop='price').get_text().replace(" ", "").strip()
+        # Parsing the size range from the inner page of the card
+        size_mod = soup_card_inside.find('div', id='hide_size_mod')
+        size_checkbox = size_mod.select_one('ul.c-styles.checkbox_mod')
+        sizes_container = size_checkbox.select('label', class_='size_count')
+        sizes = []
+        for size in sizes_container:
+            size = size.find(value='').get_text().strip()
+            sizes.append(size)
 
-        logger.info(link)
+        # Passing all variables, data store parsing individual elements, variable result (named tuple)
+        self.result.append(ParseResult(
+            url=link,
+            goods_name=name,
+            article=article,
+            price=price,
+            size=sizes
+        ))
 
     def run(self):
         # for url in config.NatalyFutbolka:
-        text = self.load_page()
+        text = self.load_page("https://xn--80adfgpq0bk8j.xn--p1ai/products/zhenskij-trikotazh/")
         self.parse_page(text=text)
-        #logger.info(f'Got {len(self.result)} elements')
+        for card_data in self.result:
+            logger.info(card_data)
+        logger.info(f'Got {len(self.result)} elements')
 
 
 if __name__ == '__main__':

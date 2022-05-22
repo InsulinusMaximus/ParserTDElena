@@ -14,6 +14,7 @@ ParseResult = collections.namedtuple(
     (
         'url',
         'goods_name',
+        'article',
         'price',
         'size'
     ),
@@ -129,6 +130,7 @@ class Parser_Nataly:
         self.result.append(ParseResult(
             url=link,
             goods_name=name,
+            article="",
             price=prices,
             size=sizes
         ))

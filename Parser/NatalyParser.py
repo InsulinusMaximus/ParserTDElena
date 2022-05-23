@@ -38,8 +38,8 @@ class Parser_Nataly:
         try:
             res = self.session.get(url=url)
             res.raise_for_status()
-        except:
-            print('Error')
+        except ConnectionError:
+            print("Connection refused")
         return res.text
 
     # Bringing the text of the downloaded page to BeautyfulSoup

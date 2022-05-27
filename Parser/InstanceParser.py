@@ -17,7 +17,7 @@ ParseResult = collections.namedtuple(
         'goods_name',
         'article',
         'price',
-        'size'
+        'sizes'
     ),
 )
 
@@ -40,6 +40,7 @@ class Parser_Instance:
             res = self.session.get(url=url)
             res.raise_for_status()
         except ConnectionError:
+            res = 1
             print("Connection refused")
         return res.text
 
@@ -91,7 +92,7 @@ class Parser_Instance:
             goods_name=name,
             article=article,
             price=price,
-            size=sizes
+            sizes=sizes
         ))
 
     def run(self):

@@ -8,7 +8,7 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger('TDValeriya')
 
 # To write the parsed data of one card, the data type is used - a named tuple
-product_category_name = 'AllWoman'
+product_category_name = 'All women'
 ParseResult = collections.namedtuple(
     product_category_name,
     (
@@ -16,7 +16,7 @@ ParseResult = collections.namedtuple(
         'goods_name',
         'article',
         'price',
-        'size'
+        'sizes'
     ),
 )
 
@@ -82,7 +82,7 @@ class Parser_TDValeriya:
             goods_name=name,
             article=article,
             price=price,
-            size=sizes
+            sizes=sizes
         ))
 
     def run(self):

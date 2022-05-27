@@ -8,7 +8,7 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger('Natali')
 
 # To write the parsed data of one card, the data type is used - a named tuple
-product_category_name = 'Футболки'
+product_category_name = 'All'
 ParseResult = collections.namedtuple(
     product_category_name,
     (
@@ -16,7 +16,7 @@ ParseResult = collections.namedtuple(
         'goods_name',
         'article',
         'price',
-        'size'
+        'sizes'
     ),
 )
 
@@ -132,7 +132,7 @@ class Parser_Nataly:
             goods_name=name,
             article="",
             price=prices,
-            size=sizes
+            sizes=sizes
         ))
 
     def run(self):

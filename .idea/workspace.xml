@@ -5,10 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8b5e3739-27ac-4daf-990a-ef2548e6115a" name="Changes" comment="First commit">
+      <change afterPath="$PROJECT_DIR$/Parser/ModnoParser.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Parser/GomanyParser.py" beforeDir="false" afterPath="$PROJECT_DIR$/Parser/GomanyParser.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parser/InstanceParser.py" beforeDir="false" afterPath="$PROJECT_DIR$/Parser/InstanceParser.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parser/NatalyParser.py" beforeDir="false" afterPath="$PROJECT_DIR$/Parser/NatalyParser.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Parser/OddisParcer.py" beforeDir="false" afterPath="$PROJECT_DIR$/Parser/OddisParcer.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -61,7 +60,7 @@
       <recent name="C:\Users\User\PycharmProjects\TDElenaParser" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.OddisParcer">
+  <component name="RunManager" selected="Python.ModnoParser">
     <configuration name="GomanyParser" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="ParserTDElena" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -106,6 +105,28 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="ModnoParser" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="ParserTDElena" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Parser" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Parser/ModnoParser.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="OddisParcer" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="ParserTDElena" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -120,28 +141,6 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Parser/OddisParcer.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="TDValeriayParser" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="ParserTDElena" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Parser" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Parser/TDValeriayParser.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -174,11 +173,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.ModnoParser" />
         <item itemvalue="Python.OddisParcer" />
         <item itemvalue="Python.GomanyParser" />
         <item itemvalue="Python.main (2)" />
         <item itemvalue="Python.InstanceParser" />
-        <item itemvalue="Python.TDValeriayParser" />
       </list>
     </recent_temporary>
   </component>
@@ -223,7 +222,8 @@
       <workItem from="1653648198570" duration="236000" />
       <workItem from="1653648449555" duration="1128000" />
       <workItem from="1653650111870" duration="1668000" />
-      <workItem from="1653653462798" duration="7639000" />
+      <workItem from="1653653462798" duration="8136000" />
+      <workItem from="1653826900124" duration="2772000" />
     </task>
     <task id="LOCAL-00001" summary="First commit">
       <created>1651867377911</created>
@@ -259,6 +259,7 @@
     <SUITE FILE_PATH="coverage/ParserTDElena$BeloshveikaParser.coverage" NAME="BeloshveikaParser Coverage Results" MODIFIED="1653211666925" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Parser" />
     <SUITE FILE_PATH="coverage/ParserTDElena$TDValeriayParser.coverage" NAME="TDValeriayParser Coverage Results" MODIFIED="1653292297491" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Parser" />
     <SUITE FILE_PATH="coverage/ParserTDElena$GomanyParser.coverage" NAME="GomanyParser Coverage Results" MODIFIED="1653656681038" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Parser" />
+    <SUITE FILE_PATH="coverage/ParserTDElena$ModnoParser.coverage" NAME="ModnoParser Coverage Results" MODIFIED="1653829656258" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Parser" />
     <SUITE FILE_PATH="coverage/TDElenaParser$config.coverage" NAME="config Coverage Results" MODIFIED="1652981298755" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/ParserTDElena$Instance.coverage" NAME="Instance Coverage Results" MODIFIED="1653647905876" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Parser" />
     <SUITE FILE_PATH="coverage/ParserTDElena$OddisParcer.coverage" NAME="OddisParcer Coverage Results" MODIFIED="1653676903951" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Parser" />

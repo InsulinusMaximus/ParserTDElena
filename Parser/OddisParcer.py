@@ -22,7 +22,7 @@ ParseResult = collections.namedtuple(
 )
 
 
-class Parser_Instance:
+class Parser_Oddis:
 
     def __init__(self):
         # Create session object and pass request parameters
@@ -100,5 +100,5 @@ class Parser_Instance:
 
 
 if __name__ == '__main__':
-    parser = Parser_Instance()
+    parser = Parser_Oddis()
     parser.run()

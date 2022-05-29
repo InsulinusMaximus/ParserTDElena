@@ -3,8 +3,9 @@ import collections
 import bs4
 import requests
 
-logging.basicConfig(level=logging.DEBUG)
-logger = logging.getLogger('Gomany')
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger('Modno')
 
 # To write the parsed data of one card, the data type is used - a named tuple
 product_category_name = 'All_women'
@@ -20,14 +21,14 @@ ParseResult = collections.namedtuple(
 )
 
 
-class Parser_Gomany:
+class Parser_Modno:
 
     def __init__(self):
         # Create session object and pass request parameters
         self.session = requests.session()
         self.session.headers = {
-            'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 '
-            '(KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36'
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)'
+                          'Chrome/101.0.4951.67 Safari/537.36'
         }
         # The main return list that contains named tuples with product data
         self.result = []
@@ -46,33 +47,38 @@ class Parser_Gomany:
     # Splitting the page into blocks (cards of a single product)
     def parse_page(self, text: str):
         soup = bs4.BeautifulSoup(text, 'lxml')
-        container = soup.select('li.product.type-product')
+        all_cards = soup.select_one('ul.list_tiles')
+        container = all_cards.select('li.position_item')
         for block in container:
             self.parse_block(block=block)
 
+    # Parsing of each block (cards of a single product)
     def parse_block(self, block):
-        title = block.select_one('div.title-h2')
+
+        product_title = block.select_one('div.position_item_photo')
+        title = product_title.select_one('a')
         try:
-            link = title.select_one('a').get('href')
+            link = 'https://modno-trikotazh.ru' + title.get('href')
         except AttributeError:
             link = '-'
         try:
-            name = title.select_one('a').get_text().strip()
+            name = title.select_one('span.title').get_text().strip()
         except AttributeError:
             name = '-'
 
-        try:
-            article = block.select_one('span', class_='sku').get_text().strip().replace('Артикул: ', '')
-        except AttributeError:
-            article = '-'
+        article = name
 
+        content = block.select_one('div.item_content')
         try:
-            price = block.select_one('span.price').get_text().strip().replace('₽', '').replace(',', '').split(' – ')
+            price = content.select_one('span.cennik').get_text().strip().replace('от ', '').replace(' ₽', '')
+            price = price.replace(' ', '')
         except AttributeError:
-            price = ['-']
+            price = '-'
 
+        chars = content.select_one('div.chars')
+        sizes_container = chars.select_one('span.chars___filter_size_test')
         try:
-            sizes = block.select_one('div.sku').get_text().replace('Размеры: ', '').split(', ')
+            sizes = sizes_container.select_one('span.chars_char_data').get_text().strip().split(', ')
         except AttributeError:
             sizes = ['-']
 
@@ -87,7 +93,7 @@ class Parser_Gomany:
 
     def run(self):
         # for url in config.NatalyFutbolka:
-        text = self.load_page(url='https://gomani.ru/product-category/womens/')
+        text = self.load_page('https://modno-trikotazh.ru/platja')
         self.parse_page(text=text)
         for card_data in self.result:
             logger.info(card_data)
@@ -95,5 +101,5 @@ class Parser_Gomany:
 
 
 if __name__ == '__main__':
-    parser = Parser_Gomany()
+    parser = Parser_Modno()
     parser.run()

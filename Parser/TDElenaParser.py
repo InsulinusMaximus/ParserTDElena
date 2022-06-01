@@ -46,7 +46,7 @@ class Parser_TDElena:
     # Bringing the text of the downloaded page to BeautyfulSoup
     # Splitting the page into blocks (cards of a single product)
     def parse_page(self, text: str):
-        soup = bs4.BeautifulSoup(text, 'lxml')
+        soup = bs4.BeautifulSoup(text, 'html.parser')
         catalog_block = soup.select_one('div.catalog_block')
         container = catalog_block.select('div.catalog_item_wrapp')
         for block in container:
@@ -54,60 +54,61 @@ class Parser_TDElena:
 
     def parse_block(self, block):
         item_title = block.select_one('div.item-title')
+
         try:
             link = 'https://td-elena.ru' + item_title.select_one('a').get('href')
-
         except AttributeError:
             link = None
-        if link is not None:
-            logger.info(link)
-            # Getting data from the card page
-            res_card_inside = self.load_page(link)
-            soup_card_inside = bs4.BeautifulSoup(res_card_inside, 'lxml')
 
-            # Parsing the name from the inner page of the card
-            content = soup_card_inside.select_one('div.container')
-            try:
-                name = content.select_one('h1').get_text().strip()
-            except AttributeError:
-                name = '-'
+        logger.info(link)
+        # Getting data from the card page
+        res_card_inside = self.load_page(link)
+        soup_card_inside = bs4.BeautifulSoup(res_card_inside, 'lxml')
 
-            # Parsing the article from the inner page of the card
-            article_block = content.select_one('div.article.iblock')
-            try:
-                article = article_block.select_one('span.value').get_text().strip()
-            except AttributeError:
-                article = '-'
+        # Parsing the name from the inner page of the card
+        content = soup_card_inside.select_one('div.container')
+        try:
+            name = content.select_one('h1').get_text().strip()
+        except AttributeError:
+            name = '-'
 
-            # Parsing prices from the inner page of the card
-            total_price = content.select_one('div.price.total_price')
-            try:
-                price = total_price.select_one('span.price-val').get_text().strip()
-            except AttributeError:
-                price = '-'
+        # Parsing the article from the inner page of the card
+        article_block = content.select_one('div.article.iblock')
+        try:
+            article = article_block.select_one('span.value').get_text().strip()
+        except AttributeError:
+            article = '-'
 
-            # Parsing the size range from the inner page of the card
-            size_table = content.select_one('tbody')
-            sizes = {}
-            try:
-                size_table_rows = size_table.select('tr')
-            except AttributeError:
-                size_table_rows = None
-                sizes.update({'-': '-'})
+        # Parsing prices from the inner page of the card
+        total_price = content.select_one('div.price.total_price')
+        try:
+            price = total_price.select_one('span.price-val').get_text().strip()
+        except AttributeError:
+            price = '-'
 
-            if size_table_rows is not None:
-                for size_table_row in size_table_rows:
-                    try:
-                        size = size_table_row.select_one('td').get_text()
-                    except AttributeError:
-                        size = '-'
-                    try:
-                        size_price = size_table_row.select_one('td.store-price').get_text()
-                    except AttributeError:
-                        size_price = '-'
-                    # Exclude the last line with "All sizes..."
-                    if size.isdigit():
-                        sizes.update({size: size_price})
+        # Parsing the size range from the inner page of the card
+        size_table = content.select_one('tbody')
+        sizes = {}
+        try:
+            size_table_rows = size_table.select('tr')
+        except AttributeError:
+            size_table_rows = None
+            sizes.update({'-': '-'})
+
+        if size_table_rows is not None:
+            for size_table_row in size_table_rows:
+                try:
+                    size = size_table_row.select_one('td').get_text()
+                except AttributeError:
+                    size = '-'
+                try:
+                    size_price = size_table_row.select_one('td.store-price').get_text()
+                except AttributeError:
+                    size_price = '-'
+
+                sizes.update({size: size_price})
+            if 'Все размеры (размерный ряд)' in sizes:
+                del sizes['Все размеры (размерный ряд)']
 
             # Passing all variables, data store parsing individual elements, variable result (named tuple)
             self.result.append(ParseResult(
@@ -117,9 +118,6 @@ class Parser_TDElena:
                 price=price,
                 sizes=sizes
             ))
-        else:
-            print('error')
-
 
     def run(self):
         # for url in config.NatalyFutbolka:

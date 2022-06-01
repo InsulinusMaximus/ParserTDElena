@@ -39,6 +39,7 @@ class Parser_TDValeriya:
             res = self.session.get(url=url)
             res.raise_for_status()
         except ConnectionError:
+            res = 1
             print("Connection refused")
         return res.text
 

@@ -63,10 +63,14 @@ class Parser_TDValeriya:
 
         # Parsing the name from the inner page of the card
         name = soup_card_inside.select_one('h2.c-offer_title').get_text().strip()
+
+        # Parsing the article from the inner page of the card
         article = soup_card_inside.select_one('div.c-offer_article').get_text().strip().replace('Артикул: ', '')
+
         # Parsing prices from the inner page of the card
         price_mod = soup_card_inside.select_one('div.c-opt.price_mod')
         price = price_mod.find('span', itemprop='price').get_text().replace(" ", "").strip()
+
         # Parsing the size range from the inner page of the card
         size_mod = soup_card_inside.find('div', id='hide_size_mod')
         size_checkbox = size_mod.select_one('ul.c-styles.checkbox_mod')

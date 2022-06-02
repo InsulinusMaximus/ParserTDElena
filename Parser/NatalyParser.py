@@ -75,17 +75,16 @@ class Parser_Nataly:
             logger.error('No product card linc and name with article')
             return
         # 5 lvl. Get link from attribute href
-        link = link_name_article.get('href')
-        if not link:
-            logger.error('No link')
-            return
+        try:
+            link = link_name_article.get('href')
+        except AttributeError:
+            link = None
         link = 'https://natali37.ru/' + link
         # 5 lvl. Take out the name and article from the tag <a
-        name = link_name_article.get_text()
-        if not name:
-            logger.error('No name')
-            return
-        name = name.split()
+        try:
+            name = link_name_article.get_text().split()
+        except AttributeError:
+            name = '-'
 
         # 3 lvl. 'pricetable_productcard' contains tags with price tables (purchase size - price)
         pricetable_productcard = content.select_one('div.price-table.product-card__price-table')
@@ -105,7 +104,7 @@ class Parser_Nataly:
             try:
                 purchasesize = price_purchasesize.find('div', class_='price-table__name').text.strip()
             except AttributeError:
-                purchasesize = '--'
+                purchasesize = '-'
             # 6 lvl. Saving the price, as well as catching an error in the absence of a price
             try:
                 price = price_purchasesize.find('div', class_='price-table__value').text.strip()
@@ -120,11 +119,10 @@ class Parser_Nataly:
             logger.error('No sizes table')
             return
         # 4 lvl. Getting all sizes and saving to a list
-        sizes = sizes_productcard.select_one('ul.sizes__list.list').get_text()
-        if not sizes:
-            logger.error('No sizes')
-            return
-        sizes = " ".join(sizes.split()).split()
+        try:
+            sizes = sizes_productcard.select_one('ul.sizes__list.list').get_text().split()
+        except AttributeError:
+            sizes = ['-']
 
         # Passing all variables, data store parsing individual elements, variable result (named tuple)
         self.result.append(ParseResult(
@@ -139,5 +137,7 @@ class Parser_Nataly:
         for url in config.NatalyFutbolka:
             text = self.load_page(url=url)
             self.parse_page(text=text)
-            logger.info(f'Got {len(self.result)} elements')
+        for card_data in self.result:
+            logger.info(card_data)
+        logger.info(f'Got {len(self.result)} elements')
 

@@ -82,10 +82,11 @@ class Parser_Nataly:
         link = 'https://natali37.ru/' + link
         # 5 lvl. Take out the name and article from the tag <a
         try:
-            name = link_name_article.get_text().split()
+            name = link_name_article.get_text().strip()
         except AttributeError:
             name = '-'
-
+        article_in_link = link.split('/')
+        article = article_in_link[-1]
         # 3 lvl. 'pricetable_productcard' contains tags with price tables (purchase size - price)
         pricetable_productcard = content.select_one('div.price-table.product-card__price-table')
         if not pricetable_productcard:
@@ -107,7 +108,8 @@ class Parser_Nataly:
                 purchasesize = '-'
             # 6 lvl. Saving the price, as well as catching an error in the absence of a price
             try:
-                price = price_purchasesize.find('div', class_='price-table__value').text.strip()
+                price = price_purchasesize.find('div', class_='price-table__value').text.replace('₽', '').strip()
+                price = price.replace('\t', '').replece('\n', '')
             except AttributeError:
                 price = '--'
 
@@ -128,15 +130,17 @@ class Parser_Nataly:
         self.result.append(ParseResult(
             url=link,
             goods_name=name,
-            article="",
+            article=article,
             price=prices,
             sizes=sizes
         ))
 
     def run(self):
-        for url in config.NatalyFutbolka:
-            text = self.load_page(url=url)
-            self.parse_page(text=text)
+        for women_url in config.women_urls:
+            for url in women_url:
+                text = self.load_page(url=url)
+                self.parse_page(text=text)
+                logger.info(f'Got {len(self.result)} elements')
         for card_data in self.result:
             logger.info(card_data)
         logger.info(f'Got {len(self.result)} elements')

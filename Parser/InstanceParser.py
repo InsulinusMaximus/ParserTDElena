@@ -3,9 +3,8 @@ import collections
 import bs4
 import requests
 import re
-from Parser import config
 
-logging.basicConfig(level=logging.DEBUG)
+logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger('Instance')
 
 # To write the parsed data of one card, the data type is used - a named tuple
@@ -99,11 +98,14 @@ class Parser_Instance:
         # for url in config.NatalyFutbolka:
         text = self.load_page(url='https://instanceshop.ru/bridzhi/')
         self.parse_page(text=text)
-        for card_data in self.result:
-            logger.info(card_data)
-            # logger.info(f'Got {len(self.result)} elements')
+        # for card_data in self.result:
+        # logger.info(card_data)
+        # logger.info(f'Got {len(self.result)} elements')
 
 
 if __name__ == '__main__':
     parser = Parser_Instance()
     parser.run()
+
+    for i in parser.result:
+        print(i[1])

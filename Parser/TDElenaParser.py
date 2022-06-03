@@ -120,7 +120,7 @@ class Parser_TDElena:
             ))
 
     def run(self):
-        # for url in config.NatalyFutbolka:
+        # for url in Config.NatalyFutbolka:
         text = self.load_page(url='https://td-elena.ru/catalog/muzhskaya_odezhda/bryuki_1/')
         self.parse_page(text=text)
         for card_data in self.result:

@@ -92,7 +92,7 @@ class Parser_Modno:
         ))
 
     def run(self):
-        # for url in config.NatalyFutbolka:
+        # for url in Config.NatalyFutbolka:
         text = self.load_page('https://modno-trikotazh.ru/platja')
         self.parse_page(text=text)
         for card_data in self.result:

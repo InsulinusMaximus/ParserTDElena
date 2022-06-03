@@ -86,7 +86,7 @@ class Parser_Gomany:
         ))
 
     def run(self):
-        # for url in config.NatalyFutbolka:
+        # for url in Config.NatalyFutbolka:
         text = self.load_page(url='https://gomani.ru/product-category/womens/')
         self.parse_page(text=text)
         for card_data in self.result:

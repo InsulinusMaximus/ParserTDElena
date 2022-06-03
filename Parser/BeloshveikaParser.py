@@ -5,7 +5,7 @@ import time
 import requests
 from requests.adapters import HTTPAdapter
 from requests.packages.urllib3.util.retry import Retry
-from Parser import config
+from Parser import Config
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger('Beloshveika')
@@ -61,7 +61,7 @@ class Parser_Beloshveika:
         # self.parse_block(block=block)
 
     def run(self):
-        # for url in config.NatalyFutbolka:
+        # for url in Config.NatalyFutbolka:
         text = self.load_page()
         self.parse_page(text=text)
         logger.info(f'Got {len(self.result)} elements')

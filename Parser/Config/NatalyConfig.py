@@ -1,6 +1,5 @@
 import collections
 
-
 # Nataly
 # Women
 product_category_name = 'Women'

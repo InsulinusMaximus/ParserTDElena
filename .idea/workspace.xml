@@ -5,11 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8b5e3739-27ac-4daf-990a-ef2548e6115a" name="Changes" comment="First commit">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Parser/config/NatalyConfig.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Parser/NatalyParser.py" beforeDir="false" afterPath="$PROJECT_DIR$/Parser/NatalyParser.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parser/TDValeriayParser.py" beforeDir="false" afterPath="$PROJECT_DIR$/Parser/TDValeriayParser.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parser/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/Parser/config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_save.csv" beforeDir="false" afterPath="$PROJECT_DIR$/test_save.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -231,7 +228,7 @@
       <workItem from="1654089095090" duration="1925000" />
       <workItem from="1654106308779" duration="4180000" />
       <workItem from="1654176635740" duration="4541000" />
-      <workItem from="1654243900034" duration="11102000" />
+      <workItem from="1654243900034" duration="11538000" />
     </task>
     <task id="LOCAL-00001" summary="First commit">
       <created>1651867377911</created>

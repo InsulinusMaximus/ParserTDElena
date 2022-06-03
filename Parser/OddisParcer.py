@@ -3,7 +3,7 @@ import collections
 import bs4
 import requests
 import re
-from Parser import config
+from Parser import Config
 
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger('Oddis')
@@ -91,7 +91,7 @@ class Parser_Oddis:
         ))
 
     def run(self):
-        # for url in config.NatalyFutbolka:
+        # for url in Config.NatalyFutbolka:
         text = self.load_page(url='https://oddis.ru/produkciya/zhenshchinam')
         self.parse_page(text=text)
         for card_data in self.result:

@@ -2,7 +2,7 @@ import logging
 import collections
 import bs4
 import requests
-from Parser import config
+from Parser import Config
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger('TDValeriya')
@@ -91,7 +91,7 @@ class Parser_TDValeriya:
         ))
 
     def run(self):
-        # for url in config.NatalyFutbolka:
+        # for url in Config.NatalyFutbolka:
         text = self.load_page("https://xn--80adfgpq0bk8j.xn--p1ai/products/zhenskij-trikotazh/")
         self.parse_page(text=text)
         for card_data in self.result:

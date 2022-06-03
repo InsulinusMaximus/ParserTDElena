@@ -95,7 +95,7 @@ class Parser_Instance:
         ))
 
     def run(self):
-        # for url in config.NatalyFutbolka:
+        # for url in Config.NatalyFutbolka:
         text = self.load_page(url='https://instanceshop.ru/bridzhi/')
         self.parse_page(text=text)
         # for card_data in self.result:

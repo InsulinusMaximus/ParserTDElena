@@ -1,5 +1,4 @@
 from Parser import NatalyParser
-from Parser import Config
 from save import Save_Results
 
 if __name__ == '__main__':

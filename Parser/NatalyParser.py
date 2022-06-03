@@ -2,8 +2,8 @@ import logging
 import collections
 import bs4
 import requests
-from Parser import config
-from Config import NatalyConfig
+import Parser.Config.NatalyConfig as config
+
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger('Natali')
@@ -40,6 +40,7 @@ class Parser_Nataly:
             res = self.session.get(url=url)
             res.raise_for_status()
         except ConnectionError:
+            res = 1
             print("Connection refused")
         return res.text
 
@@ -137,7 +138,7 @@ class Parser_Nataly:
         ))
 
     def run(self):
-        for women_url in NatalyConfig.women_urls:
+        for women_url in config.women_urls:
             for url in women_url:
                 text = self.load_page(url=url)
                 self.parse_page(text=text)

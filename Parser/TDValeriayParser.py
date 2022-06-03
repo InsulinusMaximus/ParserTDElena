@@ -8,7 +8,7 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger('TDValeriya')
 
 # To write the parsed data of one card, the data type is used - a named tuple
-product_category_name = 'All women'
+product_category_name = 'All_women'
 ParseResult = collections.namedtuple(
     product_category_name,
     (

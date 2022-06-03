@@ -109,9 +109,9 @@ class Parser_Nataly:
             # 6 lvl. Saving the price, as well as catching an error in the absence of a price
             try:
                 price = price_purchasesize.find('div', class_='price-table__value').text.replace('₽', '').strip()
-                price = price.replace('\t', '').replece('\n', '')
+                price = price.replace('\t', '').replace('\n', '')
             except AttributeError:
-                price = '--'
+                price = '-'
 
             prices.update({purchasesize: price})
 

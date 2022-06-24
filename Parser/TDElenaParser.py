@@ -2,7 +2,8 @@ import logging
 import collections
 import bs4
 import requests
-
+import Parser.Config.TDElenaConfig as ConfigTDElena
+import Parser.Config.NatalyConfig as ConfigNataly
 
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger('TDElena')
@@ -31,6 +32,7 @@ class Parser_TDElena:
             '(KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36'
         }
         # The main return list that contains named tuples with product data
+        self.parsing_result = []
         self.result = []
 
     # Method that loads a page and returns HTML in a text format
@@ -60,7 +62,6 @@ class Parser_TDElena:
         except AttributeError:
             link = None
 
-        logger.info(link)
         # Getting data from the card page
         res_card_inside = self.load_page(link)
         soup_card_inside = bs4.BeautifulSoup(res_card_inside, 'lxml')
@@ -111,7 +112,7 @@ class Parser_TDElena:
                 del sizes['Все размеры (размерный ряд)']
 
             # Passing all variables, data store parsing individual elements, variable result (named tuple)
-            self.result.append(ParseResult(
+            self.parsing_result.append(ParseResult(
                 url=link,
                 goods_name=name,
                 article=article,
@@ -120,14 +121,20 @@ class Parser_TDElena:
             ))
 
     def run(self):
-        # for url in Config.NatalyFutbolka:
-        text = self.load_page(url='https://td-elena.ru/catalog/muzhskaya_odezhda/bryuki_1/')
-        self.parse_page(text=text)
-        for card_data in self.result:
-            logger.info(card_data)
-        logger.info(f'Got {len(self.result)} elements')
+        for women_url in ConfigTDElena.women_urls:
+            if type(women_url) is str:
+                logger.info('STR')
+                text = self.load_page(url=women_url)
+                self.parse_page(text=text)
+            else:
+                for url in women_url:
+                    text = self.load_page(url=url)
+                    self.parse_page(text=text)
+            logger.info(f'Got {len(self.parsing_result)} elements')
 
+        for card_data in self.parsing_result:
+            logger.info(self.parsing_result)
+            if card_data.article in ConfigNataly.women_articles.TD_Elena:
+                logger.info(card_data)
 
-if __name__ == '__main__':
-    parser = Parser_TDElena()
-    parser.run()
+        logger.info(self.result)

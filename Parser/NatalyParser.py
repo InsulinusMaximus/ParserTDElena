@@ -2,8 +2,7 @@ import logging
 import collections
 import bs4
 import requests
-import Parser.Config.NatalyConfig as config
-
+import Parser.Config.NatalyConfig as Config
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger('Natali')
@@ -32,7 +31,8 @@ class Parser_Nataly:
             '(KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36'
         }
         # The main return list that contains named tuples with product data
-        self.result = []
+        self.parsing_result = []
+        self.result_nataly = []
 
     # Method that loads a page and returns HTML in a text format
     def load_page(self, url):
@@ -88,7 +88,7 @@ class Parser_Nataly:
         except AttributeError:
             name = '-'
         article_in_link = link.split('/')
-        article = article_in_link[-1]
+        article = '0' + article_in_link[-1]
         # 3 lvl. 'pricetable_productcard' contains tags with price tables (purchase size - price)
         pricetable_productcard = content.select_one('div.price-table.product-card__price-table')
         if not pricetable_productcard:
@@ -129,7 +129,7 @@ class Parser_Nataly:
             sizes = ['-']
 
         # Passing all variables, data store parsing individual elements, variable result (named tuple)
-        self.result.append(ParseResult(
+        self.parsing_result.append(ParseResult(
             url=link,
             goods_name=name,
             article=article,
@@ -138,12 +138,16 @@ class Parser_Nataly:
         ))
 
     def run(self):
-        for women_url in config.women_urls:
+        for women_url in Config.women_urls:
             for url in women_url:
                 text = self.load_page(url=url)
                 self.parse_page(text=text)
-                logger.info(f'Got {len(self.result)} elements')
-        for card_data in self.result:
-            logger.info(card_data)
-        logger.info(f'Got {len(self.result)} elements')
+                logger.info(f'Got {len(self.parsing_result)} elements')
 
+        for card_data in self.parsing_result:
+            if card_data.article in Config.women_articles.Nataly:
+                self.result_nataly.append(card_data)
+
+        for data in self.result_nataly:
+            logger.info(data)
+        logger.info(f'Got {len(self.result_nataly)} elements')

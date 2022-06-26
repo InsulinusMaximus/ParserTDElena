@@ -3,13 +3,15 @@ from Parser import TDElenaParser
 from save import Save_Results
 
 if __name__ == '__main__':
-        #parser = NatalyParser.Parser_Nataly()
-        #parser.run()
+    TDElena_parser = TDElenaParser.Parser_TDElena()
+    TDElena_parser.run()
 
-    parser = TDElenaParser.Parser_TDElena()
-    parser.run()
+    #Nataly_parser = NatalyParser.Parser_Nataly()
+    #Nataly_parser.run()
 
-    save = Save_Results(parser.result)
+
+
+    save = Save_Results(TDElena_parser.result)
     save.run()
 
 

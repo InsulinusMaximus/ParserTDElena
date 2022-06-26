@@ -121,23 +121,20 @@ class Parser_TDElena:
                 sizes=sizes
             ))
 
-    def run(self):
-        for women_url in ConfigTDElena.women_urls:
-            if type(women_url) is str:
-                logger.info('STR')
-                text = self.load_page(url=women_url)
-                self.parse_page(text=text)
-            else:
-                for url in women_url:
-                    text = self.load_page(url=url)
-                    self.parse_page(text=text)
-            logger.info(f'Got {len(self.parsing_result)} elements')
-
-        for card_data in self.parsing_result:
+    def article_filtering(self, parsing_result):
+        for card_data in parsing_result:
             if card_data.article in ConfigNataly.women_articles.TD_Elena:
                 self.result.append(card_data)
-        logger.info("----------------------------------------------------------------------------------------")
-        logger.info("----------------------------------------------------------------------------------------")
+
+    def run(self):
+        for women_url in ConfigTDElena.women_urls:
+            for url in women_url:
+                text = self.load_page(url=url)
+                self.parse_page(text=text)
+            logger.info(f'Got {len(self.parsing_result)} elements')
+
+        self.article_filtering(parsing_result=self.parsing_result)
+
         logger.info('\n'.join(map(str, self.result)))
         logger.info(f'Got {len(self.result)} elements')
 

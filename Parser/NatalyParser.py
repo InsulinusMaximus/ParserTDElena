@@ -2,7 +2,7 @@ import logging
 import collections
 import bs4
 import requests
-import Parser.Config.NatalyConfig as Config
+import Parser.Config.NatalyConfig as ConfigNataly
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger('Natali')
@@ -137,17 +137,19 @@ class Parser_Nataly:
             sizes=sizes
         ))
 
+    def article_filtering(self, parsing_result):
+        for card_data in parsing_result:
+            if card_data.article in ConfigNataly.women_articles.Nataly:
+                self.result_nataly.append(card_data)
+
     def run(self):
-        for women_url in Config.women_urls:
+        for women_url in ConfigNataly.women_urls:
             for url in women_url:
                 text = self.load_page(url=url)
                 self.parse_page(text=text)
                 logger.info(f'Got {len(self.parsing_result)} elements')
 
-        for card_data in self.parsing_result:
-            if card_data.article in Config.women_articles.Nataly:
-                self.result_nataly.append(card_data)
+        self.article_filtering(parsing_result=self.parsing_result)
 
-        for data in self.result_nataly:
-            logger.info(data)
+        logger.info('\n'.join(map(str, self.result_nataly)))
         logger.info(f'Got {len(self.result_nataly)} elements')

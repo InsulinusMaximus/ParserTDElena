@@ -1,4 +1,8 @@
-halaty = ['https://natali37.ru/catalog/category/163?page=' + str(i) for i in range(1, 29+1)]
+halaty = ('https://natali37.ru/catalog/category/163?page=',)
+
+for i in halaty:
+    print(i)
 
 print(type(halaty))
-
+print(halaty)
+print(halaty.__sizeof__())

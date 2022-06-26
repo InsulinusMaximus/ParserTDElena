@@ -147,9 +147,9 @@ class Parser_Nataly:
                 self.result_nataly.append(card_data)
 
     def run(self):
-        for women_url in ConfigNataly.women_urls:
+        for women_url in ConfigNataly.women_urls.halaty:
             for url in women_url:
-                text = self.load_page(url=url)
+                text = self.load_page(url=women_url)
                 self.parse_page(text=text)
                 logger.info(f'Got {len(self.parsing_result)} elements')
 

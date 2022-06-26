@@ -36,7 +36,7 @@ class Parser_TDElena:
         }
         # The main return list that contains named tuples with product data
         self.parsing_result = []
-        self.result = []
+        self.result_tdelena = []
 
     # Method that loads a page and returns HTML in a text format
     def load_page(self, url):
@@ -128,17 +128,17 @@ class Parser_TDElena:
     def article_filtering(self, parsing_result):
         for card_data in parsing_result:
             if card_data.article in ConfigNataly.women_articles.TD_Elena:
-                self.result.append(card_data)
+                self.result_tdelena.append(card_data)
 
     def run(self):
-        for women_url in ConfigTDElena.women_urls:
+        for women_url in ConfigTDElena.women_urls.halaty:
             for url in women_url:
-                text = self.load_page(url=url)
+                text = self.load_page(url=women_url)
                 self.parse_page(text=text)
             logger.info(f'Got {len(self.parsing_result)} elements')
 
         self.article_filtering(parsing_result=self.parsing_result)
 
-        logger.info('\n'.join(map(str, self.result)))
-        logger.info(f'Got {len(self.result)} elements')
+        logger.info('\n'.join(map(str, self.result_tdelena)))
+        logger.info(f'Got {len(self.result_tdelena)} elements')
 

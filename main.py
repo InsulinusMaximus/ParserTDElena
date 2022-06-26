@@ -1,18 +1,19 @@
 from Parser import NatalyParser
 from Parser import TDElenaParser
-from save import Save_Results
+from repository import Repository
+import Parser.Config.NatalyConfig as ConfigNataly
 
 if __name__ == '__main__':
+
     TDElena_parser = TDElenaParser.Parser_TDElena()
     TDElena_parser.run()
 
     Nataly_parser = NatalyParser.Parser_Nataly()
     Nataly_parser.run()
 
-    save = Save_Results(TDElena_parser.result)
-    save.run()
+    repo = Repository(TDElena_parser.result_tdelena, Nataly_parser.result_nataly, ConfigNataly.women_articles.TD_Elena,
+                      ConfigNataly.women_articles.Nataly)
+    repo.run()
 
-    save_nataly = Save_Results(Nataly_parser.result_nataly)
-    save_nataly.run()
 
 

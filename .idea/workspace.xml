@@ -5,8 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8b5e3739-27ac-4daf-990a-ef2548e6115a" name="Changes" comment="First commit">
-      <change beforePath="$PROJECT_DIR$/Parser/Config/NatalyConfig.py" beforeDir="false" afterPath="$PROJECT_DIR$/Parser/Config/NatalyConfig.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parser/Config/TDElenaConfig.py" beforeDir="false" afterPath="$PROJECT_DIR$/Parser/Config/TDElenaConfig.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Parser/NatalyParser.py" beforeDir="false" afterPath="$PROJECT_DIR$/Parser/NatalyParser.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Parser/TDElenaParser.py" beforeDir="false" afterPath="$PROJECT_DIR$/Parser/TDElenaParser.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/save.py" beforeDir="false" afterPath="$PROJECT_DIR$/save.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wdfbv.py" beforeDir="false" afterPath="$PROJECT_DIR$/wdfbv.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -247,7 +251,7 @@
       <workItem from="1656233672924" duration="4745000" />
       <workItem from="1656238659974" duration="66000" />
       <workItem from="1656238741981" duration="44000" />
-      <workItem from="1656238890198" duration="3438000" />
+      <workItem from="1656238890198" duration="4468000" />
     </task>
     <task id="LOCAL-00001" summary="First commit">
       <created>1651867377911</created>
@@ -293,7 +297,7 @@
     <SUITE FILE_PATH="coverage/ParserTDElena$main.coverage" NAME="main Coverage Results" MODIFIED="1656241779801" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/ParserTDElena$InstanceParser.coverage" NAME="InstanceParser Coverage Results" MODIFIED="1654243392069" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Parser" />
     <SUITE FILE_PATH="coverage/ParserTDElena$OddisParcer.coverage" NAME="OddisParcer Coverage Results" MODIFIED="1653676903951" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Parser" />
-    <SUITE FILE_PATH="coverage/ParserTDElena$wdfbv.coverage" NAME="wdfbv Coverage Results" MODIFIED="1656241955177" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/ParserTDElena$wdfbv.coverage" NAME="wdfbv Coverage Results" MODIFIED="1656243122440" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/ParserTDElena$Test.coverage" NAME="Test Coverage Results" MODIFIED="1654107976263" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Parser" />
     <SUITE FILE_PATH="coverage/TDElenaParser$main.coverage" NAME="main Coverage Results" MODIFIED="1652992117485" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Parser" />
   </component>

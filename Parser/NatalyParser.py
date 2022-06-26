@@ -5,13 +5,16 @@ import requests
 import Parser.Config.NatalyConfig as ConfigNataly
 
 logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger('Natali')
+logger = logging.getLogger('Nataly')
+
+company = 'NATALY'
 
 # To write the parsed data of one card, the data type is used - a named tuple
 product_category_name = 'All'
 ParseResult = collections.namedtuple(
     product_category_name,
     (
+        'company',
         'url',
         'goods_name',
         'article',
@@ -130,6 +133,7 @@ class Parser_Nataly:
 
         # Passing all variables, data store parsing individual elements, variable result (named tuple)
         self.parsing_result.append(ParseResult(
+            company=company,
             url=link,
             goods_name=name,
             article=article,

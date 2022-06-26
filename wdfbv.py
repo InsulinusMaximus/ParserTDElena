@@ -1,8 +1,13 @@
-halaty = ('https://natali37.ru/catalog/category/163?page=',)
+import datetime
+now = datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
 
-for i in halaty:
-    print(i)
+print(now)
+print(now)
+print(now)
+print(now)
+now = datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
+print(now)
+print(now)
+print(now)
 
-print(type(halaty))
-print(halaty)
-print(halaty.__sizeof__())
+

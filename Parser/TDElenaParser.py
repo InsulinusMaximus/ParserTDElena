@@ -8,11 +8,14 @@ import Parser.Config.NatalyConfig as ConfigNataly
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger('TDElena')
 
+company = 'TDElena'
+
 # To write the parsed data of one card, the data type is used - a named tuple
 product_category_name = 'All_women'
 ParseResult = collections.namedtuple(
     product_category_name,
     (
+        'company',
         'url',
         'goods_name',
         'article',
@@ -114,6 +117,7 @@ class Parser_TDElena:
 
             # Passing all variables, data store parsing individual elements, variable result (named tuple)
             self.parsing_result.append(ParseResult(
+                company=company,
                 url=link,
                 goods_name=name,
                 article=article,

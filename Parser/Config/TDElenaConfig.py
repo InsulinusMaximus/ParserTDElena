@@ -118,14 +118,14 @@ category_url = collections.namedtuple(
     )
 )
 
-kostyumy = ('https://natali37.ru/catalog/category/210?page=' + str(i) for i in range(1, 6+1))
-futbolky = ('https://natali37.ru/catalog/category/213?page=' + str(i) for i in range(1, 21+1))
-tolstovki = ('https://natali37.ru/catalog/category/215?page=' + str(i) for i in range(1, 7+1))
-bryuki = ('https://natali37.ru/catalog/category/217?page=' + str(i) for i in range(1, 5+1))
-halaty = 'https://natali37.ru/catalog/category/220?page=1'
-shorty = ('https://natali37.ru/catalog/category/219?page=' + str(i) for i in range(1, 4+1))
-pizhamy = 'https://natali37.ru/catalog/category/314?page='
-kurtki = 'https://natali37.ru/catalog/category/581?page='
+kostyumy = tuple('https://natali37.ru/catalog/category/210?page=' + str(i) for i in range(1, 7))
+futbolky = tuple('https://natali37.ru/catalog/category/213?page=' + str(i) for i in range(1, 22))
+tolstovki = tuple('https://natali37.ru/catalog/category/215?page=' + str(i) for i in range(1, 8))
+bryuki = tuple('https://natali37.ru/catalog/category/217?page=' + str(i) for i in range(1, 6))
+halaty = ('https://natali37.ru/catalog/category/220?page=1',)
+shorty = tuple('https://natali37.ru/catalog/category/219?page=' + str(i) for i in range(1, 5))
+pizhamy = ('https://natali37.ru/catalog/category/314?page=',)
+kurtki = ('https://natali37.ru/catalog/category/581?page=',)
 
 men_urls = category_url(
     kostyumy=kostyumy,

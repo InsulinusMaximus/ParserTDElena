@@ -9,7 +9,7 @@ if __name__ == '__main__':
     parser = TDElenaParser.Parser_TDElena()
     parser.run()
 
-    # save = Save_Results(parser.parsing_result)
-    # save.run()
+    save = Save_Results(parser.result)
+    save.run()
 
 

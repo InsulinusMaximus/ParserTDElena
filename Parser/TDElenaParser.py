@@ -77,6 +77,7 @@ class Parser_TDElena:
         article_block = content.select_one('div.article.iblock')
         try:
             article = article_block.select_one('span.value').get_text().strip()
+            article = ''.join(filter(str.isdigit, article))
         except AttributeError:
             article = '-'
 
@@ -133,8 +134,10 @@ class Parser_TDElena:
             logger.info(f'Got {len(self.parsing_result)} elements')
 
         for card_data in self.parsing_result:
-            logger.info(self.parsing_result)
             if card_data.article in ConfigNataly.women_articles.TD_Elena:
-                logger.info(card_data)
+                self.result.append(card_data)
+        logger.info("----------------------------------------------------------------------------------------")
+        logger.info("----------------------------------------------------------------------------------------")
+        logger.info('\n'.join(map(str, self.result)))
+        logger.info(f'Got {len(self.result)} elements')
 
-        logger.info(self.result)

@@ -1,6 +1,6 @@
 import collections
 
-# Nataly
+# TD Elena
 # Women
 product_category_name = 'Women'
 category_url = collections.namedtuple(

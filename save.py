@@ -21,16 +21,10 @@ class Save_Results:
 
     def save_result(self):
 
-
-
-
-
         path = f'C:/Users/Pavel/PycharmProjects/TDElenaParser/test_save{datetime.now().strftime("%Y%m%d-%H%M%S")}.csv'
         with open(path, 'w', encoding="utf-8", newline="") as f:
             writer = csv.writer(f, quoting=csv.QUOTE_MINIMAL, delimiter=';')
             writer.writerow(HEADERS)
-
-
 
             for item in self.tdelena_result:
                 writer.writerow(item)

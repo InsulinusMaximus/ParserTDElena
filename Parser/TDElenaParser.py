@@ -27,13 +27,14 @@ ParseResult = collections.namedtuple(
 
 class Parser_TDElena:
 
-    def __init__(self):
+    def __init__(self, articles_data):
         # Create session object and pass request parameters
         self.session = requests.session()
         self.session.headers = {
             'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 '
             '(KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36'
         }
+        self.articles_data = articles_data
         # The main return list that contains named tuples with product data
         self.parsing_result = []
         self.result_tdelena = []
@@ -118,24 +119,24 @@ class Parser_TDElena:
             # Passing all variables, data store parsing individual elements, variable result (named tuple)
             self.parsing_result.append(ParseResult(
                 company=company,
-                url=link,
                 goods_name=name,
                 article=article,
                 price=price,
-                sizes=sizes
+                sizes=sizes,
+                url=link,
             ))
 
     def article_filtering(self, parsing_result):
         for card_data in parsing_result:
-            if card_data.article in ConfigNataly.women_articles.TD_Elena:
+            if card_data.article in self.articles_data:
                 self.result_tdelena.append(card_data)
 
     def run(self):
-        for women_url in ConfigTDElena.women_urls.halaty:
+        for women_url in ConfigTDElena.women_urls:
             for url in women_url:
-                text = self.load_page(url=women_url)
+                text = self.load_page(url=url)
                 self.parse_page(text=text)
-            logger.info(f'Got {len(self.parsing_result)} elements')
+                logger.info(f'Got {len(self.parsing_result)} elements')
 
         self.article_filtering(parsing_result=self.parsing_result)
 

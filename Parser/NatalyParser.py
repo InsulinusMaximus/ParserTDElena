@@ -134,11 +134,11 @@ class Parser_Nataly:
         # Passing all variables, data store parsing individual elements, variable result (named tuple)
         self.parsing_result.append(ParseResult(
             company=company,
-            url=link,
             goods_name=name,
             article=article,
             price=prices,
-            sizes=sizes
+            sizes=sizes,
+            url=link,
         ))
 
     def article_filtering(self, parsing_result):
@@ -147,9 +147,9 @@ class Parser_Nataly:
                 self.result_nataly.append(card_data)
 
     def run(self):
-        for women_url in ConfigNataly.women_urls.halaty:
+        for women_url in ConfigNataly.women_urls:
             for url in women_url:
-                text = self.load_page(url=women_url)
+                text = self.load_page(url=url)
                 self.parse_page(text=text)
                 logger.info(f'Got {len(self.parsing_result)} elements')
 

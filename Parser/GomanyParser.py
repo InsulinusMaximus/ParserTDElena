@@ -2,35 +2,41 @@ import logging
 import collections
 import bs4
 import requests
+import Parser.Config.GomanyConfig as GomanyConfig
 
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger('Gomany')
 
+company = 'Gomany'
+
 # To write the parsed data of one card, the data type is used - a named tuple
-product_category_name = 'All_women'
+product_category_name = 'All'
 ParseResult = collections.namedtuple(
     product_category_name,
     (
-        'url',
-        'goods_name',
+        'company',
         'article',
+        'goods_name',
         'price',
         'sizes'
+        'url'
     ),
 )
 
 
 class Parser_Gomany:
 
-    def __init__(self):
+    def __init__(self, articles_data):
         # Create session object and pass request parameters
         self.session = requests.session()
         self.session.headers = {
             'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 '
             '(KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36'
         }
+        self.articles_data = articles_data
         # The main return list that contains named tuples with product data
-        self.result = []
+        self.parsing_result = []
+        self.result_gomany = []
 
     # Method that loads a page and returns HTML in a text format
     def load_page(self, url):
@@ -77,21 +83,27 @@ class Parser_Gomany:
             sizes = ['-']
 
         # Passing all variables, data store parsing individual elements, variable result (named tuple)
-        self.result.append(ParseResult(
-            url=link,
-            goods_name=name,
+        self.parsing_result.append(ParseResult(
+            company=company,
             article=article,
+            goods_name=name,
             price=price,
-            sizes=sizes
+            sizes=sizes,
+            url=link
         ))
 
+    def article_filtering(self, parsing_result):
+        for card_data in parsing_result:
+            if card_data.article in self.articles_data:
+                self.result_gomany.append(card_data)
+
     def run(self):
-        # for url in Config.NatalyFutbolka:
-        text = self.load_page(url='https://gomani.ru/product-category/womens/')
+        # for url in GomanyConfig.:
+        text = self.load_page(url=)
         self.parse_page(text=text)
-        for card_data in self.result:
+        for card_data in self.parsing_result:
             logger.info(card_data)
-        logger.info(f'Got {len(self.result)} elements')
+        logger.info(f'Got {len(self.parsing_result)} elements')
 
 
 if __name__ == '__main__':

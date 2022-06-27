@@ -38,15 +38,26 @@ class Repository:
 
     def search_articles(self, article_list, tdelena_result, second_company_result):
         for article in article_list:
-            if article_list.index(article)%2==0:
+            if article_list.index(article) % 2 == 0:
                 for data in tdelena_result:
                     if data.article == article:
                         self.general_data.append(data)
+            else:
+                for data in second_company_result:
+                    if data.article == article:
+                        self.general_data.append(data)
+
+    def save_genera_data(self):
+        path = f'C:/Users/Pavel/PycharmProjects/TDElenaParser/test_save{datetime.now().strftime("%Y%m%d-%H%M%S")}.csv'
+        with open(path, 'w', encoding="utf-8", newline="") as f:
+            writer = csv.writer(f, quoting=csv.QUOTE_MINIMAL, delimiter=';')
+            writer.writerow(HEADERS)
+            for item in self.general_data:
+                writer.writerow(item)
 
     def run(self):
         self.overall_article_list(tdelena_config=self.tdelena_config, second_company_config=self.second_company_config)
         self.search_articles(article_list=self.article_list, tdelena_result=self.tdelena_result,
                              second_company_result=self.second_company_result)
-        logger.info('\n'.join(self.general_data))
-
-
+        self.save_genera_data()
+        logger.info('\n'.join(map(str, self.general_data)))

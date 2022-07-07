@@ -27,17 +27,18 @@ ParseResult = collections.namedtuple(
 
 class Parser_TDElena:
 
-    def __init__(self, articles_data):
+    def __init__(self):
         # Create session object and pass request parameters
         self.session = requests.session()
         self.session.headers = {
             'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 '
             '(KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36'
         }
-        self.articles_data = articles_data
         # The main return list that contains named tuples with product data
         self.parsing_result = []
-        self.result_tdelena = []
+        self.result_tdelena_women = []
+        self.result_tdelena_men = []
+        self.result_tdelena_children = []
 
     # Method that loads a page and returns HTML in a text format
     def load_page(self, url):
@@ -126,20 +127,52 @@ class Parser_TDElena:
                 url=link,
             ))
 
-    def article_filtering(self, parsing_result):
+    def article_filtering(self, parsing_result, category_result, articles_data):
         for card_data in parsing_result:
-            if card_data.article in self.articles_data:
-                self.result_tdelena.append(card_data)
+            if card_data.article in articles_data:
+                category_result.append(card_data)
+                logger.info(f'Got {len(self.parsing_result)} elements')
 
-    def run(self):
+    def run_women_parsing(self):
         for women_url in ConfigTDElena.women_urls:
             for url in women_url:
                 text = self.load_page(url=url)
                 self.parse_page(text=text)
-                logger.info(f'Got {len(self.parsing_result)} elements')
 
-        self.article_filtering(parsing_result=self.parsing_result)
+        self.article_filtering(parsing_result=self.parsing_result,
+                               category_result=self.result_tdelena_women,
+                               articles_data=ConfigNataly.women_articles
+                               )
 
-        logger.info('\n'.join(map(str, self.result_tdelena)))
-        logger.info(f'Got {len(self.result_tdelena)} elements')
+        logger.info('\n'.join(map(str, self.result_tdelena_women)))
+        logger.info(f'Got {len(self.result_tdelena_women)} elements')
+
+    def run_men_parsing(self):
+        for men_url in ConfigTDElena.men_urls:
+            for url in men_url:
+                text = self.load_page(url=url)
+                self.parse_page(text=text)
+
+        self.article_filtering(parsing_result=self.parsing_result,
+                               category_result=self.result_tdelena_men,
+                               articles_data=ConfigNataly.men_articles
+                               )
+
+        logger.info('\n'.join(map(str, self.result_tdelena_men)))
+        logger.info(f'Got {len(self.result_tdelena_men)} elements')
+
+    def run_children_parsing(self):
+        for women_url in ConfigTDElena.children_urls:
+            for url in women_url:
+                text = self.load_page(url=url)
+                self.parse_page(text=text)
+
+        self.article_filtering(parsing_result=self.parsing_result, category_result=self.result_tdelena_children)
+
+        logger.info('\n'.join(map(str, self.result_tdelena_children)))
+        logger.info(f'Got {len(self.result_tdelena_children)} elements')
+
+
+
+
 

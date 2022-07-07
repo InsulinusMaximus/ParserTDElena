@@ -101,9 +101,9 @@ women_urls = category_url(
 
 
 # ___________________________________________________________________________________________________________________
-'''
+
 # Men
-product_category_name = 'Women'
+product_category_name = 'Men'
 category_url = collections.namedtuple(
     product_category_name,
     (
@@ -137,39 +137,46 @@ men_urls = category_url(
     pizhamy=pizhamy,
     kurtki=kurtki,
     )
-    
-women_articles = (
-    '10006',
-    '11903',
-    '12105П',
-    '12016',
-    '12005',
-    '12115',
-    '11934ВШ',
-    '10001',
-    '10004',
-    '11916',
-    '11405О',
-    '10233',
-    '11820',
-    '11631',
-    '11606',
-    '11815',
-    '11927Т',
-    '10131',
-    '11605',
-    '12024',
-    '10022',
-    '11401А',
-    '12208',
-    '12109',
-    '12010',
-    '11514',
-    '11724',
-    '11624',
-    '11725',
-    '12009',
-    '12210П',
-    '11512',
+
+# ___________________________________________________________________________________________________________________
+
+# Children
+
+# Men
+product_category_name = 'Children'
+category_url = collections.namedtuple(
+    product_category_name,
+    (
+        'tolstovki',
+        'kostyumy',
+        'futbolky',
+
+        'bryuki',
+        'halaty',
+        'shorty',
+        'pizhamy',
+        'kurtki',
+    )
 )
-'''
+
+tolstovki = tuple('https://td-elena.ru/catalog/detskaya_odezhda/zhiletki_tolstovki/?PAGEN_1=2' + str(i) for i in range(1, 8))
+
+kostyumy = tuple('https://natali37.ru/catalog/category/210?page=' + str(i) for i in range(1, 7))
+futbolky = tuple('https://natali37.ru/catalog/category/213?page=' + str(i) for i in range(1, 22))
+
+bryuki = tuple('https://natali37.ru/catalog/category/217?page=' + str(i) for i in range(1, 6))
+halaty = ('https://natali37.ru/catalog/category/220?page=1',)
+shorty = tuple('https://natali37.ru/catalog/category/219?page=' + str(i) for i in range(1, 5))
+pizhamy = ('https://natali37.ru/catalog/category/314?page=',)
+kurtki = ('https://natali37.ru/catalog/category/581?page=',)
+
+children_urls = category_url(
+    kostyumy=kostyumy,
+    futbolky=futbolky,
+    tolstovki=tolstovki,
+    bryuki=bryuki,
+    halaty=halaty,
+    shorty=shorty,
+    pizhamy=pizhamy,
+    kurtki=kurtki,
+    )

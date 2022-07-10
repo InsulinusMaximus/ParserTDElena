@@ -24,6 +24,13 @@ ParseResult = collections.namedtuple(
 )
 
 
+def article_filtering(parsing_result, category_result, articles_data):
+    for card_data in parsing_result:
+        if card_data.article in articles_data:
+            category_result.append(card_data)
+    logger.info(f'Got {len(category_result)} elements')
+
+
 class Parser_Nataly:
 
     def __init__(self):
@@ -143,12 +150,6 @@ class Parser_Nataly:
             url=link,
         ))
 
-    def article_filtering(self, parsing_result, category_result, articles_data):
-        for card_data in parsing_result:
-            if card_data.article in articles_data:
-                category_result.append(card_data)
-                logger.info(f'Got {len(self.parsing_result)} elements')
-
     def run_women_parsing(self):
         for women_url in ConfigNataly.women_urls:
             for url in women_url:
@@ -156,9 +157,9 @@ class Parser_Nataly:
                 text = self.load_page(url=url)
                 self.parse_page(text=text)
 
-        self.article_filtering(parsing_result=self.parsing_result,
-                               category_result=self.result_nataly_women,
-                               articles_data=ConfigNataly.articles_nataly_women)
+        article_filtering(parsing_result=self.parsing_result,
+                          category_result=self.result_nataly_women,
+                          articles_data=ConfigNataly.articles_nataly_women)
 
         logger.info('\n'.join(map(str, self.result_nataly_women)))
         logger.info(f'Got {len(self.result_nataly_women)} elements')
@@ -169,10 +170,10 @@ class Parser_Nataly:
                 text = self.load_page(url=url)
                 self.parse_page(text=text)
 
-        self.article_filtering(parsing_result=self.parsing_result,
-                               category_result=self.result_nataly_men,
-                               articles_data=ConfigNataly.articles_nataly_men
-                               )
+        article_filtering(parsing_result=self.parsing_result,
+                          category_result=self.result_nataly_men,
+                          articles_data=ConfigNataly.articles_nataly_men
+                          )
 
         logger.info('\n'.join(map(str, self.result_nataly_men)))
         logger.info(f'Got {len(self.result_nataly_men)} elements')
@@ -183,9 +184,9 @@ class Parser_Nataly:
                 text = self.load_page(url=url)
                 self.parse_page(text=text)
 
-        self.article_filtering(parsing_result=self.parsing_result,
-                               category_result=self.result_nataly_children,
-                               articles_data=ConfigNataly.articles_nataly_children)
+        article_filtering(parsing_result=self.parsing_result,
+                          category_result=self.result_nataly_children,
+                          articles_data=ConfigNataly.articles_nataly_children)
 
         logger.info('\n'.join(map(str, self.result_nataly_children)))
         logger.info(f'Got {len(self.result_nataly_children)} elements')

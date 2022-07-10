@@ -25,6 +25,13 @@ ParseResult = collections.namedtuple(
 )
 
 
+def article_filtering(parsing_result, category_result, articles_data):
+    for card_data in parsing_result:
+        if card_data.article in articles_data:
+            category_result.append(card_data)
+    logger.info(f'Got {len(category_result)} elements')
+
+
 class Parser_TDElena:
 
     def __init__(self):
@@ -54,8 +61,13 @@ class Parser_TDElena:
     # Splitting the page into blocks (cards of a single product)
     def parse_page(self, text: str):
         soup = bs4.BeautifulSoup(text, 'html.parser')
-        catalog_block = soup.select_one('div.catalog_block')
-        container = catalog_block.select('div.catalog_item_wrapp')
+        try:
+            catalog_block = soup.select_one('div.catalog_block')
+            container = catalog_block.select('div.catalog_item_wrapp')
+        except AttributeError:
+            logger.info('There are no required attributes on the page')
+            return None
+
         for block in container:
             self.parse_block(block=block)
 
@@ -127,55 +139,46 @@ class Parser_TDElena:
                 url=link,
             ))
 
-    def article_filtering(self, parsing_result, category_result, articles_data):
-        for card_data in parsing_result:
-            if card_data.article in articles_data:
-                category_result.append(card_data)
-                logger.info(f'Got {len(self.parsing_result)} elements')
-
-    def run_women_parsing(self):
+    def run_women_parsing(self, articles_data):
         for women_url in ConfigTDElena.women_urls:
             for url in women_url:
                 logger.info(url)
                 text = self.load_page(url=url)
                 self.parse_page(text=text)
 
-        self.article_filtering(parsing_result=self.parsing_result,
-                               category_result=self.result_tdelena_women,
-                               articles_data=ConfigNataly.articles_td_elena_women
-                               )
+        article_filtering(parsing_result=self.parsing_result,
+                          category_result=self.result_tdelena_women,
+                          articles_data=articles_data
+                          )
 
         logger.info('\n'.join(map(str, self.result_tdelena_women)))
         logger.info(f'Got {len(self.result_tdelena_women)} elements')
 
-    def run_men_parsing(self):
+    def run_men_parsing(self, articles_data):
         for men_url in ConfigTDElena.men_urls:
             for url in men_url:
                 text = self.load_page(url=url)
                 self.parse_page(text=text)
 
-        self.article_filtering(parsing_result=self.parsing_result,
-                               category_result=self.result_tdelena_men,
-                               articles_data=ConfigNataly.articles_td_elena_men
-                               )
+        logger.info('\n'.join(map(str, self.parsing_result)))
+
+        article_filtering(parsing_result=self.parsing_result,
+                          category_result=self.result_tdelena_men,
+                          articles_data=articles_data
+                          )
 
         logger.info('\n'.join(map(str, self.result_tdelena_men)))
         logger.info(f'Got {len(self.result_tdelena_men)} elements')
 
-    def run_children_parsing(self):
+    def run_children_parsing(self, articles_data):
         for women_url in ConfigTDElena.children_urls:
             for url in women_url:
                 text = self.load_page(url=url)
                 self.parse_page(text=text)
 
-        self.article_filtering(parsing_result=self.parsing_result,
-                               category_result=self.result_tdelena_children,
-                               articles_data=ConfigNataly.articles_td_elena_children)
+        article_filtering(parsing_result=self.parsing_result,
+                          category_result=self.result_tdelena_children,
+                          articles_data=articles_data)
 
         logger.info('\n'.join(map(str, self.result_tdelena_children)))
         logger.info(f'Got {len(self.result_tdelena_children)} elements')
-
-
-
-
-

@@ -4,7 +4,7 @@ import bs4
 import requests
 import Parser.Config.NatalyConfig as ConfigNataly
 
-logging.basicConfig(level=logging.INFO)
+logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger('Nataly')
 
 company = 'NATALY'
@@ -35,7 +35,9 @@ class Parser_Nataly:
         }
         # The main return list that contains named tuples with product data
         self.parsing_result = []
-        self.result_nataly = []
+        self.result_nataly_women = []
+        self.result_nataly_men = []
+        self.result_nataly_children = []
 
     # Method that loads a page and returns HTML in a text format
     def load_page(self, url):
@@ -141,19 +143,49 @@ class Parser_Nataly:
             url=link,
         ))
 
-    def article_filtering(self, parsing_result):
+    def article_filtering(self, parsing_result, category_result, articles_data):
         for card_data in parsing_result:
-            if card_data.article in ConfigNataly.women_articles.Nataly:
-                self.result_nataly.append(card_data)
+            if card_data.article in articles_data:
+                category_result.append(card_data)
+                logger.info(f'Got {len(self.parsing_result)} elements')
 
-    def run(self):
+    def run_women_parsing(self):
         for women_url in ConfigNataly.women_urls:
+            for url in women_url:
+                logger.info(url)
+                text = self.load_page(url=url)
+                self.parse_page(text=text)
+
+        self.article_filtering(parsing_result=self.parsing_result,
+                               category_result=self.result_nataly_women,
+                               articles_data=ConfigNataly.articles_nataly_women)
+
+        logger.info('\n'.join(map(str, self.result_nataly_women)))
+        logger.info(f'Got {len(self.result_nataly_women)} elements')
+
+    def run_men_parsing(self):
+        for men_url in ConfigNataly.men_urls:
+            for url in men_url:
+                text = self.load_page(url=url)
+                self.parse_page(text=text)
+
+        self.article_filtering(parsing_result=self.parsing_result,
+                               category_result=self.result_nataly_men,
+                               articles_data=ConfigNataly.articles_nataly_men
+                               )
+
+        logger.info('\n'.join(map(str, self.result_nataly_men)))
+        logger.info(f'Got {len(self.result_nataly_men)} elements')
+
+    def run_children_parsing(self):
+        for women_url in ConfigNataly.children_urls:
             for url in women_url:
                 text = self.load_page(url=url)
                 self.parse_page(text=text)
-                logger.info(f'Got {len(self.parsing_result)} elements')
 
-        self.article_filtering(parsing_result=self.parsing_result)
+        self.article_filtering(parsing_result=self.parsing_result,
+                               category_result=self.result_nataly_children,
+                               articles_data=ConfigNataly.articles_nataly_children)
 
-        logger.info('\n'.join(map(str, self.result_nataly)))
-        logger.info(f'Got {len(self.result_nataly)} elements')
+        logger.info('\n'.join(map(str, self.result_nataly_children)))
+        logger.info(f'Got {len(self.result_nataly_children)} elements')

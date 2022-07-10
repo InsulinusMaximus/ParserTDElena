@@ -1,3 +1,4 @@
+'''
 import collections
 
 # TDElena
@@ -37,7 +38,7 @@ articles_gomany = (
     'С1283'
 )
 
-articles_td_elena = (
+articles_td_elena_women = (
     '30081В',
     '30078Х',
     '31468К',
@@ -47,12 +48,13 @@ articles_td_elena = (
 )
 
 women_articles = articles(
-    TD_Elena=articles_td_elena,
+    TD_Elena=articles_td_elena_women,
     Gomany=articles_gomany
 )
 
 # ____________________________________________________________________________________________________________________
 # Men
+'''
 
 
 

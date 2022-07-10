@@ -3,7 +3,7 @@ import collections
 import bs4
 import requests
 import Parser.Config.GomanyConfig as GomanyConfig
-
+'''
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger('Gomany')
 
@@ -109,3 +109,4 @@ class Parser_Gomany:
 if __name__ == '__main__':
     parser = Parser_Gomany()
     parser.run()
+'''

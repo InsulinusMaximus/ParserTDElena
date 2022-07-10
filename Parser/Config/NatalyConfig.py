@@ -73,7 +73,7 @@ articles = collections.namedtuple(
     )
 )
 
-articles_nataly = (
+articles_nataly_women = (
     '025188',
     '011200',
     '08130',
@@ -130,7 +130,7 @@ articles_nataly = (
     '018255',
 )
 
-articles_td_elena = (
+articles_td_elena_women = (
     '32291',
     '31822',
     '31946',
@@ -187,13 +187,13 @@ articles_td_elena = (
 )
 
 women_articles = articles(
-    Nataly=articles_nataly,
-    TD_Elena=articles_td_elena
+    Nataly=articles_nataly_women,
+    TD_Elena=articles_td_elena_women
 )
 
 # ____________________________________________________________________________________________________________________
 # Men
-product_category_name = 'Women'
+product_category_name = 'Men'
 category_url = collections.namedtuple(
     product_category_name,
     (
@@ -228,7 +228,7 @@ men_urls = category_url(
     kurtki,
     )
 
-men_articles = (
+articles_nataly_men = (
     '014972',
     '026123',
     '024871',
@@ -263,5 +263,93 @@ men_articles = (
     '009886',
 )
 
+articles_td_elena_men = (
+    '014972',
+    '026123',
+    '024871',
+    '025889',
+    '023976',
+    '018403',
+    '025417',
+    '002167',
+    '027153',
+    '026114',
+    '025649',
+    '024671',
+    '025650',
+    '020904',
+    '021230',
+    '013876',
+    '013824',
+    '023078',
+    '000047',
+    '021084',
+    '006997',
+    '019021',
+    '018397',
+    '015652',
+    '017012',
+    '025363',
+    '008875',
+    '014948',
+    '019832',
+    '023332',
+    '024190',
+    '009886',
+)
+
+men_articles = articles(
+    Nataly=articles_nataly_men,
+    TD_Elena=articles_td_elena_men
+)
+# ____________________________________________________________________________________________________________________
+# Children
+product_category_name = 'Children'
+category_url = collections.namedtuple(
+    product_category_name,
+    (
+        'kostyumy',
+        'futbolky',
+        'tolstovki',
+        'bryuki',
+        'halaty',
+        'shorty',
+        'pizhamy',
+        'kurtki',
+    )
+)
+
+kostyumy = tuple('https://natali37.ru/catalog/category/210?page=' + str(i) for i in range(1, 7))
+futbolky = tuple('https://natali37.ru/catalog/category/213?page=' + str(i) for i in range(1, 22))
+tolstovki = tuple('https://natali37.ru/catalog/category/215?page=' + str(i) for i in range(1, 8))
+bryuki = tuple('https://natali37.ru/catalog/category/217?page=' + str(i) for i in range(1, 6))
+halaty = ('https://natali37.ru/catalog/category/220?page=1',)
+shorty = tuple('https://natali37.ru/catalog/category/219?page=' + str(i) for i in range(1, 5))
+pizhamy = ('https://natali37.ru/catalog/category/314?page=',)
+kurtki = ('https://natali37.ru/catalog/category/581?page=',)
+
+children_urls = category_url(
+    kostyumy,
+    futbolky,
+    tolstovki,
+    bryuki,
+    halaty,
+    shorty,
+    pizhamy,
+    kurtki,
+    )
+
+articles_nataly_children = (
+
+)
+
+articles_td_elena_children = (
+
+)
+
+children_articles = articles(
+    Nataly=articles_nataly_children,
+    TD_Elena=articles_td_elena_children
+)
 
 

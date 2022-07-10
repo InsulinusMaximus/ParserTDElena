@@ -11,7 +11,7 @@ logger = logging.getLogger('TDElena')
 company = 'TDElena'
 
 # To write the parsed data of one card, the data type is used - a named tuple
-product_category_name = 'All_women'
+product_category_name = 'All'
 ParseResult = collections.namedtuple(
     product_category_name,
     (
@@ -136,12 +136,13 @@ class Parser_TDElena:
     def run_women_parsing(self):
         for women_url in ConfigTDElena.women_urls:
             for url in women_url:
+                logger.info(url)
                 text = self.load_page(url=url)
                 self.parse_page(text=text)
 
         self.article_filtering(parsing_result=self.parsing_result,
                                category_result=self.result_tdelena_women,
-                               articles_data=ConfigNataly.women_articles
+                               articles_data=ConfigNataly.articles_td_elena_women
                                )
 
         logger.info('\n'.join(map(str, self.result_tdelena_women)))
@@ -155,7 +156,7 @@ class Parser_TDElena:
 
         self.article_filtering(parsing_result=self.parsing_result,
                                category_result=self.result_tdelena_men,
-                               articles_data=ConfigNataly.men_articles
+                               articles_data=ConfigNataly.articles_td_elena_men
                                )
 
         logger.info('\n'.join(map(str, self.result_tdelena_men)))
@@ -167,7 +168,9 @@ class Parser_TDElena:
                 text = self.load_page(url=url)
                 self.parse_page(text=text)
 
-        self.article_filtering(parsing_result=self.parsing_result, category_result=self.result_tdelena_children)
+        self.article_filtering(parsing_result=self.parsing_result,
+                               category_result=self.result_tdelena_children,
+                               articles_data=ConfigNataly.articles_td_elena_children)
 
         logger.info('\n'.join(map(str, self.result_tdelena_children)))
         logger.info(f'Got {len(self.result_tdelena_children)} elements')

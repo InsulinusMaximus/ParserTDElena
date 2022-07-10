@@ -18,7 +18,6 @@ category_url = collections.namedtuple(
         'kapri',
         'futbolky',
         'topy',
-        'bortsovki',
         'vodolazki',
         'mayki',
         'dzhempery',
@@ -49,7 +48,6 @@ halaty = tuple('https://td-elena.ru/catalog/zhenskaya_odezhda/khalaty_1/?PAGEN_1
 kapri = ('https://td-elena.ru/catalog/zhenskaya_odezhda/kapri/',)
 futbolky = tuple('https://td-elena.ru/catalog/zhenskaya_odezhda/futbolki/?PAGEN_1=' + str(i) for i in range(1, 6))
 topy = ('https://td-elena.ru/catalog/zhenskaya_odezhda/topy/?PAGEN_1=',)
-bortsovki = ('https://td-elena.ru/catalog/zhenskaya_odezhda/bortsovki//?PAGEN_1=',)
 vodolazki = ('https://td-elena.ru/catalog/zhenskaya_odezhda/vodolazki_1/?PAGEN_1=',)
 mayki = ('https://td-elena.ru/catalog/zhenskaya_odezhda/mayki/?PAGEN_1=',)
 dzhempery = tuple('https://td-elena.ru/catalog/zhenskaya_odezhda/dzhempery/?PAGEN_1=' + str(i) for i in range(1, 3))
@@ -82,7 +80,6 @@ women_urls = category_url(
     kapri=kapri,
     futbolky=futbolky,
     topy=topy,
-    bortsovki=bortsovki,
     vodolazki=vodolazki,
     mayki=mayki,
     dzhempery=dzhempery,
@@ -97,8 +94,6 @@ women_urls = category_url(
     velosipedki=velosipedki,
     kostyumy_domashniye=kostyumy_domashniye
 )
-
-
 
 # ___________________________________________________________________________________________________________________
 
@@ -142,7 +137,6 @@ men_urls = category_url(
 
 # Children
 
-# Men
 product_category_name = 'Children'
 category_url = collections.namedtuple(
     product_category_name,

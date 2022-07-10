@@ -3,7 +3,8 @@ import collections
 import bs4
 import requests
 import Parser.Config.TDElenaConfig as ConfigTDElena
-import Parser.Config.NatalyConfig as ConfigNataly
+from Parser.ArticlesFilter import article_filtering
+
 
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger('TDElena')
@@ -23,13 +24,6 @@ ParseResult = collections.namedtuple(
         'sizes'
     ),
 )
-
-
-def article_filtering(parsing_result, category_result, articles_data):
-    for card_data in parsing_result:
-        if card_data.article in articles_data:
-            category_result.append(card_data)
-    logger.info(f'Got {len(category_result)} elements')
 
 
 class Parser_TDElena:

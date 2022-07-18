@@ -105,6 +105,7 @@ class Parser_TDElena:
         try:
             size_table_rows = size_table.select('tr')
         except AttributeError:
+            logger.info('AttributeError')
             size_table_rows = None
             sizes.update({'-': '-'})
 
@@ -123,15 +124,15 @@ class Parser_TDElena:
             if 'Все размеры (размерный ряд)' in sizes:
                 del sizes['Все размеры (размерный ряд)']
 
-            # Passing all variables, data store parsing individual elements, variable result (named tuple)
-            self.parsing_result.append(ParseResult(
-                company=company,
-                goods_name=name,
-                article=article,
-                price=price,
-                sizes=sizes,
-                url=link,
-            ))
+        # Passing all variables, data store parsing individual elements, variable result (named tuple)
+        self.parsing_result.append(ParseResult(
+            company=company,
+            goods_name=name,
+            article=article,
+            price=price,
+            sizes=sizes,
+            url=link,
+        ))
 
     def run_women_parsing(self, articles_data):
         for women_url in ConfigTDElena.women_urls:
@@ -151,6 +152,7 @@ class Parser_TDElena:
     def run_men_parsing(self, articles_data):
         for men_url in ConfigTDElena.men_urls:
             for url in men_url:
+                logger.info(url)
                 text = self.load_page(url=url)
                 self.parse_page(text=text)
 

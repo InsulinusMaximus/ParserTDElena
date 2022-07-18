@@ -2,7 +2,6 @@
 import csv
 import logging
 from datetime import datetime
-import Parser.Config.NatalyConfig as ConfigNataly
 
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger('Repository')
@@ -19,17 +18,16 @@ HEADERS = (
 
 class Repository:
 
-    def __init__(self, tdelena_result, second_company_result, tdelena_config, second_company_config):
+    def __init__(self, tdelena_result, second_company_result, tdelena_articles_config, second_company_articles_config):
         self.tdelena_result = tdelena_result
         self.second_company_result = second_company_result
-        self.tdelena_config = tdelena_config
-        self.second_company_config = second_company_config
+        self.tdelena_config = tdelena_articles_config
+        self.second_company_config = second_company_articles_config
         self.article_list = []
         self.general_data = []
 
     def overall_article_list(self, tdelena_config, second_company_config):
         length_td_elena_config = len(tdelena_config)
-        length_second_company_config = len(second_company_config)
 
         for article_index in range(length_td_elena_config):
             logger.info(article_index)

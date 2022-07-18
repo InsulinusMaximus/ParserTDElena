@@ -102,35 +102,41 @@ product_category_name = 'Men'
 category_url = collections.namedtuple(
     product_category_name,
     (
-        'kostyumy',
         'futbolky',
-        'tolstovki',
         'bryuki',
-        'halaty',
-        'shorty',
+        'kostyumy',
         'pizhamy',
-        'kurtki',
+        'belye',
+        'halaty',
+        'mayki',
+        'shorty',
+        'vodolazki',
+        'tolstovki',
     )
 )
+futbolky = tuple('https://td-elena.ru/catalog/muzhskaya_odezhda/futbolki_1/?PAGEN_1=' + str(i) for i in range(1, 5))
+bryuki = ('https://td-elena.ru/catalog/muzhskaya_odezhda/bryuki_1/',)
+kostyumy = ('https://td-elena.ru/catalog/muzhskaya_odezhda/kostyumy/',)
+pizhamy = ('https://td-elena.ru/catalog/muzhskaya_odezhda/pizhamy/',)
+belye = tuple('https://td-elena.ru/catalog/muzhskaya_odezhda/bele_2/?PAGEN_1=' + str(i) for i in range(1, 3))
+halaty = ('https://td-elena.ru/catalog/muzhskaya_odezhda/khalaty_2/',)
+mayki = ('https://td-elena.ru/catalog/muzhskaya_odezhda/mayki_1/',)
+shorty = ('https://td-elena.ru/catalog/muzhskaya_odezhda/shorty_kapri/',)
+vodolazki = ('https://td-elena.ru/catalog/muzhskaya_odezhda/dzhempery_vodolazki/',)
+tolstovki = ('https://td-elena.ru/catalog/muzhskaya_odezhda/tolstovki_shoty/',)
 
-kostyumy = tuple('https://natali37.ru/catalog/category/210?page=' + str(i) for i in range(1, 7))
-futbolky = tuple('https://natali37.ru/catalog/category/213?page=' + str(i) for i in range(1, 22))
-tolstovki = tuple('https://natali37.ru/catalog/category/215?page=' + str(i) for i in range(1, 8))
-bryuki = tuple('https://natali37.ru/catalog/category/217?page=' + str(i) for i in range(1, 6))
-halaty = ('https://natali37.ru/catalog/category/220?page=1',)
-shorty = tuple('https://natali37.ru/catalog/category/219?page=' + str(i) for i in range(1, 5))
-pizhamy = ('https://natali37.ru/catalog/category/314?page=',)
-kurtki = ('https://natali37.ru/catalog/category/581?page=',)
 
 men_urls = category_url(
-    kostyumy=kostyumy,
-    futbolky=futbolky,
-    tolstovki=tolstovki,
-    bryuki=bryuki,
-    halaty=halaty,
-    shorty=shorty,
-    pizhamy=pizhamy,
-    kurtki=kurtki,
+        futbolky=futbolky,
+        bryuki=bryuki,
+        kostyumy=kostyumy,
+        pizhamy=pizhamy,
+        belye=belye,
+        halaty=halaty,
+        mayki=mayki,
+        shorty=shorty,
+        vodolazki=vodolazki,
+        tolstovki=tolstovki
     )
 
 # ___________________________________________________________________________________________________________________

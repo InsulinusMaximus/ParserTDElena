@@ -16,11 +16,11 @@ ParseResult = collections.namedtuple(
     product_category_name,
     (
         'company',
-        'url',
         'goods_name',
         'article',
         'price',
-        'sizes'
+        'sizes',
+        'url',
     ),
 )
 
@@ -161,12 +161,15 @@ class Parser_Nataly:
     def run_men_parsing(self):
         for men_url in ConfigNataly.men_urls:
             for url in men_url:
+                logger.info(url)
                 text = self.load_page(url=url)
                 self.parse_page(text=text)
 
+        logger.info('\n'.join(map(str, self.parsing_result)))
+
         article_filtering(parsing_result=self.parsing_result,
                           category_result=self.result_nataly_men,
-                          articles_data=ConfigNataly.articles_nataly_men
+                          articles_data=ConfigNataly.men_articles_dict.values()
                           )
 
         logger.info('\n'.join(map(str, self.result_nataly_men)))

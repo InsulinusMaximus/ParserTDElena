@@ -17,11 +17,11 @@ ParseResult = collections.namedtuple(
     product_category_name,
     (
         'company',
-        'url',
         'goods_name',
         'article',
         'price',
-        'sizes'
+        'sizes',
+        'url',
     ),
 )
 
@@ -105,7 +105,6 @@ class Parser_TDElena:
         try:
             size_table_rows = size_table.select('tr')
         except AttributeError:
-            logger.info('AttributeError')
             size_table_rows = None
             sizes.update({'-': '-'})
 

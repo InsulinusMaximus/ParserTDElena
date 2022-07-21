@@ -6,7 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="8b5e3739-27ac-4daf-990a-ef2548e6115a" name="Changes" comment="First commit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Parser/ArticlesFilter.py" beforeDir="false" afterPath="$PROJECT_DIR$/Parser/ArticlesFilter.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Parser/Config/NatalyConfig.py" beforeDir="false" afterPath="$PROJECT_DIR$/Parser/Config/NatalyConfig.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Parser/NatalyParser.py" beforeDir="false" afterPath="$PROJECT_DIR$/Parser/NatalyParser.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Parser/TDElenaParser.py" beforeDir="false" afterPath="$PROJECT_DIR$/Parser/TDElenaParser.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/repository.py" beforeDir="false" afterPath="$PROJECT_DIR$/repository.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/service.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -257,7 +262,10 @@
       <workItem from="1657482880493" duration="11136000" />
       <workItem from="1657622292693" duration="1020000" />
       <workItem from="1658078011957" duration="2138000" />
-      <workItem from="1658143276290" duration="8410000" />
+      <workItem from="1658143276290" duration="8426000" />
+      <workItem from="1658155354604" duration="2420000" />
+      <workItem from="1658290160883" duration="758000" />
+      <workItem from="1658402318391" duration="17114000" />
     </task>
     <task id="LOCAL-00001" summary="First commit">
       <created>1651867377911</created>
@@ -302,7 +310,7 @@
     <SUITE FILE_PATH="coverage/ParserTDElena$TestSelenium.coverage" NAME="TestSelenium Coverage Results" MODIFIED="1654090924151" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Parser" />
     <SUITE FILE_PATH="coverage/TDElenaParser$config.coverage" NAME="config Coverage Results" MODIFIED="1652981298755" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/ParserTDElena$Instance.coverage" NAME="Instance Coverage Results" MODIFIED="1653647905876" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Parser" />
-    <SUITE FILE_PATH="coverage/ParserTDElena$main.coverage" NAME="main Coverage Results" MODIFIED="1658152273235" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/ParserTDElena$main.coverage" NAME="main Coverage Results" MODIFIED="1658433360761" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/ParserTDElena$InstanceParser.coverage" NAME="InstanceParser Coverage Results" MODIFIED="1654243392069" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Parser" />
     <SUITE FILE_PATH="coverage/ParserTDElena$OddisParcer.coverage" NAME="OddisParcer Coverage Results" MODIFIED="1653676903951" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Parser" />
     <SUITE FILE_PATH="coverage/ParserTDElena$wdfbv.coverage" NAME="wdfbv Coverage Results" MODIFIED="1657526976815" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />

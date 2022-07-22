@@ -153,7 +153,8 @@ class Parser_Nataly:
 
         article_filtering(parsing_result=self.parsing_result,
                           category_result=self.result_nataly_women,
-                          articles_data=ConfigNataly.articles_nataly_women)
+                          articles_data=ConfigNataly.women_articles_dict.values()
+                          )
 
         logger.info('\n'.join(map(str, self.result_nataly_women)))
         logger.info(f'Got {len(self.result_nataly_women)} elements')

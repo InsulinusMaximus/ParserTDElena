@@ -5,9 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8b5e3739-27ac-4daf-990a-ef2548e6115a" name="Changes" comment="First commit">
+      <change afterPath="$PROJECT_DIR$/aefb.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parser/ArticlesFilter.py" beforeDir="false" afterPath="$PROJECT_DIR$/Parser/ArticlesFilter.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Parser/Config/NatalyConfig.py" beforeDir="false" afterPath="$PROJECT_DIR$/Parser/Config/NatalyConfig.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Parser/NatalyParser.py" beforeDir="false" afterPath="$PROJECT_DIR$/Parser/NatalyParser.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Parser/TDElenaParser.py" beforeDir="false" afterPath="$PROJECT_DIR$/Parser/TDElenaParser.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/service.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,28 +86,6 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="TDElenaConfig" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="ParserTDElena" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Parser/Config" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Parser/Config/TDElenaConfig.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <configuration name="TDElenaParser" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="ParserTDElena" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -118,6 +100,28 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Parser/TDElenaParser.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="aefb" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="ParserTDElena" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/aefb.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -173,10 +177,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.main" />
+        <item itemvalue="Python.aefb" />
         <item itemvalue="Python.wdfbv" />
         <item itemvalue="Python.ModnoParser" />
         <item itemvalue="Python.TDElenaParser" />
-        <item itemvalue="Python.TDElenaConfig" />
       </list>
     </recent_temporary>
   </component>
@@ -261,7 +265,10 @@
       <workItem from="1658143276290" duration="8426000" />
       <workItem from="1658155354604" duration="2420000" />
       <workItem from="1658290160883" duration="758000" />
-      <workItem from="1658402318391" duration="19434000" />
+      <workItem from="1658402318391" duration="19510000" />
+      <workItem from="1658477737477" duration="107000" />
+      <workItem from="1658487532150" duration="1172000" />
+      <workItem from="1658503844691" duration="6378000" />
     </task>
     <task id="LOCAL-00001" summary="First commit">
       <created>1651867377911</created>
@@ -299,6 +306,7 @@
     <SUITE FILE_PATH="coverage/ParserTDElena$repository.coverage" NAME="repository Coverage Results" MODIFIED="1656269942128" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/ParserTDElena$TDElenaConfig.coverage" NAME="TDElenaConfig Coverage Results" MODIFIED="1656272263420" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Parser/Config" />
     <SUITE FILE_PATH="coverage/TDElenaParser$parser.coverage" NAME="parser Coverage Results" MODIFIED="1650893918124" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Parser" />
+    <SUITE FILE_PATH="coverage/ParserTDElena$aefb.coverage" NAME="aefb Coverage Results" MODIFIED="1658511083267" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/ParserTDElena$tsidvcjhb.coverage" NAME="tsidvcjhb Coverage Results" MODIFIED="1653163763262" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Parser" />
     <SUITE FILE_PATH="coverage/ParserTDElena$main__2_.coverage" NAME="main (2) Coverage Results" MODIFIED="1653648499390" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/ParserTDElena$config.coverage" NAME="config Coverage Results" MODIFIED="1654255603883" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Parser" />
@@ -306,7 +314,7 @@
     <SUITE FILE_PATH="coverage/ParserTDElena$TestSelenium.coverage" NAME="TestSelenium Coverage Results" MODIFIED="1654090924151" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Parser" />
     <SUITE FILE_PATH="coverage/TDElenaParser$config.coverage" NAME="config Coverage Results" MODIFIED="1652981298755" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/ParserTDElena$Instance.coverage" NAME="Instance Coverage Results" MODIFIED="1653647905876" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Parser" />
-    <SUITE FILE_PATH="coverage/ParserTDElena$main.coverage" NAME="main Coverage Results" MODIFIED="1658435674460" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/ParserTDElena$main.coverage" NAME="main Coverage Results" MODIFIED="1658511168690" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/ParserTDElena$InstanceParser.coverage" NAME="InstanceParser Coverage Results" MODIFIED="1654243392069" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Parser" />
     <SUITE FILE_PATH="coverage/ParserTDElena$OddisParcer.coverage" NAME="OddisParcer Coverage Results" MODIFIED="1653676903951" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Parser" />
     <SUITE FILE_PATH="coverage/ParserTDElena$wdfbv.coverage" NAME="wdfbv Coverage Results" MODIFIED="1657526976815" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />

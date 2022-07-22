@@ -140,15 +140,9 @@ class Parser_TDElena:
                 text = self.load_page(url=url)
                 self.parse_page(text=text)
 
-        article_filtering(parsing_result=self.parsing_result,
-                          category_result=self.result_tdelena_women,
-                          articles_data=articles_data
-                          )
-
         logger.info('\n'.join(map(str, self.result_tdelena_women)))
-        logger.info(f'Got {len(self.result_tdelena_women)} elements')
 
-    def run_men_parsing(self, articles_data):
+    def run_men_parsing(self):
         for men_url in ConfigTDElena.men_urls:
             for url in men_url:
                 logger.info(url)
@@ -156,14 +150,6 @@ class Parser_TDElena:
                 self.parse_page(text=text)
 
         logger.info('\n'.join(map(str, self.parsing_result)))
-
-        article_filtering(parsing_result=self.parsing_result,
-                          category_result=self.result_tdelena_men,
-                          articles_data=articles_data
-                          )
-
-        logger.info('\n'.join(map(str, self.result_tdelena_men)))
-        logger.info(f'Got {len(self.result_tdelena_men)} elements')
 
     def run_children_parsing(self, articles_data):
         for women_url in ConfigTDElena.children_urls:

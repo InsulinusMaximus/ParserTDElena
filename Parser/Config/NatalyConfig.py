@@ -230,5 +230,6 @@ children_urls = category_url(
     kurtki,
     )
 
-
+children_articles_dict = {
+}
 

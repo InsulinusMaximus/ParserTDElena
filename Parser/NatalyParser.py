@@ -11,11 +11,10 @@ logger = logging.getLogger('Nataly')
 company = 'NATALY'
 
 # To write the parsed data of one card, the data type is used - a named tuple
-product_category_name = 'All'
+company_name = company
 ParseResult = collections.namedtuple(
-    product_category_name,
+    company_name,
     (
-        'company',
         'goods_name',
         'article',
         'price',
@@ -136,7 +135,6 @@ class Parser_Nataly:
 
         # Passing all variables, data store parsing individual elements, variable result (named tuple)
         self.parsing_result.append(ParseResult(
-            company=company,
             goods_name=name,
             article=article,
             price=prices,
@@ -153,7 +151,7 @@ class Parser_Nataly:
 
         article_filtering(parsing_result=self.parsing_result,
                           category_result=self.result_nataly_women,
-                          articles_data=ConfigNataly.women_articles_dict.values()
+                          article_data=ConfigNataly.women_articles_dict.values()
                           )
 
         logger.info('\n'.join(map(str, self.result_nataly_women)))
@@ -170,7 +168,7 @@ class Parser_Nataly:
 
         article_filtering(parsing_result=self.parsing_result,
                           category_result=self.result_nataly_men,
-                          articles_data=ConfigNataly.men_articles_dict.values()
+                          article_data=ConfigNataly.men_articles_dict.values()
                           )
 
         logger.info('\n'.join(map(str, self.result_nataly_men)))
@@ -184,7 +182,7 @@ class Parser_Nataly:
 
         article_filtering(parsing_result=self.parsing_result,
                           category_result=self.result_nataly_children,
-                          articles_data=ConfigNataly.children_articles_dict.values())
+                          article_data=ConfigNataly.children_articles_dict.values())
 
         logger.info('\n'.join(map(str, self.result_nataly_children)))
         logger.info(f'Got {len(self.result_nataly_children)} elements')

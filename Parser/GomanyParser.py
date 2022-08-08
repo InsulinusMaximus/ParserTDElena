@@ -8,14 +8,13 @@ from Parser.ArticlesFilter import article_filtering
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger('Gomany')
 
-company = 'Gomany'
+company = 'GOMANY'
 
 # To write the parsed data of one card, the data type is used - a named tuple
-product_category_name = 'All'
+company_name = company
 ParseResult = collections.namedtuple(
-    product_category_name,
+    company_name,
     (
-        'company',
         'goods_name',
         'article',
         'price',
@@ -86,9 +85,8 @@ class Parser_Gomany:
 
         # Passing all variables, data store parsing individual elements, variable result (named tuple)
         self.parsing_result.append(ParseResult(
-            company=company,
-            article=article,
             goods_name=name,
+            article=article,
             price=prices,
             sizes=sizes,
             url=link
@@ -103,7 +101,7 @@ class Parser_Gomany:
 
         article_filtering(parsing_result=self.parsing_result,
                           category_result=self.result_gomany_women,
-                          articles_data=ConfigGomany.women_articles_dict.values()
+                          article_data=ConfigGomany.women_articles_dict.values()
                           )
 
         logger.info('\n'.join(map(str, self.result_gomany_women)))
@@ -120,7 +118,7 @@ class Parser_Gomany:
 
         article_filtering(parsing_result=self.parsing_result,
                           category_result=self.result_gomany_men,
-                          articles_data=ConfigGomany.men_articles_dict.values()
+                          article_data=ConfigGomany.men_articles_dict.values()
                           )
 
         logger.info('\n'.join(map(str, self.result_gomany_men)))
@@ -134,7 +132,7 @@ class Parser_Gomany:
 
         article_filtering(parsing_result=self.parsing_result,
                           category_result=self.result_gomany_children,
-                          articles_data=ConfigGomany.children_articles_dict.values())
+                          article_data=ConfigGomany.children_articles_dict.values())
 
         logger.info('\n'.join(map(str, self.result_gomany_children)))
         logger.info(f'Got {len(self.result_gomany_children)} elements')

@@ -3,7 +3,6 @@ import collections
 import bs4
 import requests
 import Parser.Config.TDElenaConfig as ConfigTDElena
-from Parser.ArticlesFilter import article_filtering
 
 
 logging.basicConfig(level=logging.DEBUG)
@@ -12,11 +11,10 @@ logger = logging.getLogger('TDElena')
 company = 'TDElena'
 
 # To write the parsed data of one card, the data type is used - a named tuple
-product_category_name = 'All'
+company_name = company
 ParseResult = collections.namedtuple(
-    product_category_name,
+    company_name,
     (
-        'company',
         'goods_name',
         'article',
         'price',
@@ -125,7 +123,6 @@ class Parser_TDElena:
 
         # Passing all variables, data store parsing individual elements, variable result (named tuple)
         self.parsing_result.append(ParseResult(
-            company=company,
             goods_name=name,
             article=article,
             price=price,
@@ -133,7 +130,7 @@ class Parser_TDElena:
             url=link,
         ))
 
-    def run_women_parsing(self, articles_data):
+    def run_women_parsing(self):
         for women_url in ConfigTDElena.women_urls:
             for url in women_url:
                 logger.info(url)
@@ -151,15 +148,9 @@ class Parser_TDElena:
 
         logger.info('\n'.join(map(str, self.parsing_result)))
 
-    def run_children_parsing(self, articles_data):
+    def run_children_parsing(self):
         for women_url in ConfigTDElena.children_urls:
             for url in women_url:
                 text = self.load_page(url=url)
                 self.parse_page(text=text)
 
-        article_filtering(parsing_result=self.parsing_result,
-                          category_result=self.result_tdelena_children,
-                          articles_data=articles_data)
-
-        logger.info('\n'.join(map(str, self.result_tdelena_children)))
-        logger.info(f'Got {len(self.result_tdelena_children)} elements')

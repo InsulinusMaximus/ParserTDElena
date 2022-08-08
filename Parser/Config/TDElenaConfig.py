@@ -1,6 +1,8 @@
 import collections
 
 # TD Elena
+# This config file stores ONLY links to pages for parsing the Elena TD site, the article (SKU)
+# as a {Key: (Values,)} are stored in the config files of competitive companies
 # Women
 product_category_name = 'Women'
 category_url = collections.namedtuple(

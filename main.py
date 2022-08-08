@@ -2,10 +2,11 @@ from service import Service
 
 if __name__ == '__main__':
     service = Service()
-    # Nataly
-    # service.run_nataly_men_service()
 
-    # Gomany
-    service.run_gomany_all_service()
+    # Women
+    # service.run_women_service()
+
+    # Men
+    service.run_men_service()
 
 

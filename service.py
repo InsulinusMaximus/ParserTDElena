@@ -1,5 +1,6 @@
 from Parser import TDElenaParser, NatalyParser, GomanyParser
 from repository import Repository
+from general_data import general_data
 from Parser.ArticlesFilter import article_filtering
 import Parser.Config.NatalyConfig as ConfigNataly
 import Parser.Config.GomanyConfig as ConfigGomany
@@ -57,19 +58,34 @@ class Service:
         print('\n'.join(map(str, general_company_men_result)))
         print('\n'.join(map(str, general_tdelena_men_result)))
 
-        general_dict = {}
+        final_list = []
 
         for tdelena_data in general_tdelena_men_result:
-            key = tdelena_data
-            value = []
-            value_article = overall_men_articles_dict[tdelena_data.article]
+
+            final_data = general_data(tdelena_data.goods_name, tdelena_data.article, tdelena_data.price)
+
+            list_for_values_of_the_current_item_td_elena = []
+
+            tuple_of_company_articles = overall_men_articles_dict[tdelena_data.article]
             for company_data in general_company_men_result:
-                if company_data.article == value_article:
-                    value = company_data
-                    break
+                if company_data.article in tuple_of_company_articles:
+                    list_for_values_of_the_current_item_td_elena.append(company_data)
 
+            for company in list_for_values_of_the_current_item_td_elena:
+                if 'NATALY' in company.__class__.__name__:
+                    final_data.nataly_articles = company.article
+                    final_data.nataly_prices = company.price
+                    final_data.nataly_links = company.url
 
+                if 'GOMANY' in company.__class__.__name__:
+                    final_data.gomany_articles = company.article
+                    final_data.gomany_prices = company.price
+                    final_data.gomany_links = company.url
 
+            if any((final_data.nataly_articles, final_data.gomany_articles)):
+                final_list.append(final_data)
+
+        print('\n'.join(map(str, final_list)))
 
     '''
     def run_nataly_all_service(self):

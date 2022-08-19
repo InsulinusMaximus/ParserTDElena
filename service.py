@@ -1,9 +1,23 @@
+from dataclasses import dataclass, astuple
+from typing import Any
 from Parser import TDElenaParser, NatalyParser, GomanyParser
 from repository import Repository
-from general_data import general_data
 from Parser.ArticlesFilter import article_filtering
 import Parser.Config.NatalyConfig as ConfigNataly
 import Parser.Config.GomanyConfig as ConfigGomany
+
+
+@dataclass
+class general_data:
+    td_elena_goods_names: Any = ''
+    td_elena_articles: Any = ''
+    td_elena_prices: Any = ''
+    nataly_articles: Any = ''
+    nataly_prices: Any = ''
+    nataly_links: Any = ''
+    gomany_articles: Any = ''
+    gomany_prices: Any = ''
+    gomany_links: Any = ''
 
 
 class Service:
@@ -16,7 +30,10 @@ class Service:
         self.Nataly_parser = NatalyParser.Parser_Nataly()
         self.Gomany_parser = GomanyParser.Parser_Gomany()
 
-    # Women service
+        self.repo = Repository()
+
+    # WOMEN SERVICE
+
     def run_women_service(self):
         self.TDElena_parser.run_women_parsing()
 
@@ -33,8 +50,39 @@ class Service:
         self.Gomany_parser.run_women_parsing()
 
         general_company_women_result = self.Nataly_parser.result_nataly_women + self.Gomany_parser.result_gomany_women
+        general_tdelena_women_result = self.TDElena_parser.result_tdelena_women
+        overall_women_articles_dict = ConfigNataly.women_articles_dict | ConfigGomany.women_articles_dict
 
-        print('\n'.join(map(str, general_company_women_result)))
+        final_list = []
+
+        for tdelena_data in general_tdelena_women_result:
+
+            final_data = general_data(tdelena_data.goods_name, tdelena_data.article, tdelena_data.price)
+
+            list_for_values_of_the_current_item_td_elena = []
+
+            tuple_of_company_articles = overall_women_articles_dict[tdelena_data.article]
+            for company_data in general_company_women_result:
+                if company_data.article in tuple_of_company_articles:
+                    list_for_values_of_the_current_item_td_elena.append(company_data)
+
+            for company in list_for_values_of_the_current_item_td_elena:
+                if 'NATALY' in company.__class__.__name__:
+                    final_data.nataly_articles = company.article
+                    final_data.nataly_prices = company.price
+                    final_data.nataly_links = company.url
+
+                if 'GOMANY' in company.__class__.__name__:
+                    final_data.gomany_articles = company.article
+                    final_data.gomany_prices = company.price
+                    final_data.gomany_links = company.url
+
+            if any((final_data.nataly_articles, final_data.gomany_articles)):
+                final_list.append(astuple(final_data))
+
+        self.repo.run(final_list)
+
+    # MEN SERVICE
 
     def run_men_service(self):
         self.TDElena_parser.run_men_parsing()
@@ -54,9 +102,6 @@ class Service:
         general_company_men_result = self.Nataly_parser.result_nataly_men + self.Gomany_parser.result_gomany_men
         general_tdelena_men_result = self.TDElena_parser.result_tdelena_men
         overall_men_articles_dict = ConfigNataly.men_articles_dict | ConfigGomany.men_articles_dict
-
-        print('\n'.join(map(str, general_company_men_result)))
-        print('\n'.join(map(str, general_tdelena_men_result)))
 
         final_list = []
 
@@ -83,9 +128,10 @@ class Service:
                     final_data.gomany_links = company.url
 
             if any((final_data.nataly_articles, final_data.gomany_articles)):
-                final_list.append(final_data)
+                final_list.append(astuple(final_data))
 
-        print('\n'.join(map(str, final_list)))
+        self.repo.run(final_list)
+
 
     '''
     def run_nataly_all_service(self):

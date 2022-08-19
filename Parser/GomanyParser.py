@@ -33,7 +33,7 @@ class Parser_Gomany:
             'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 '
             '(KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36'
         }
-        # The main return list that contains named tuples with product data
+        # The main return write_list that contains named tuples with product data
         self.parsing_result = []
         self.result_gomany_women = []
         self.result_gomany_men = []
@@ -63,6 +63,7 @@ class Parser_Gomany:
             link = title.select_one('a').get('href')
         except AttributeError:
             link = '-'
+
         try:
             name = title.select_one('a').get_text().strip()
         except AttributeError:

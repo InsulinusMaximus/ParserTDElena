@@ -1,4 +1,5 @@
 from service import Service
+from Parser import TDElenaParser, NatalyParser, GomanyParser, TDValeriayParser
 
 if __name__ == '__main__':
     service = Service()
@@ -7,6 +8,10 @@ if __name__ == '__main__':
     # service.run_women_service()
 
     # Men
-    service.run_men_service()
+    # service.run_men_service()
+
+    # TEST
+    parser = TDValeriayParser.Parser_TDValeriya()
+    parser.run_women_parsing()
 
 

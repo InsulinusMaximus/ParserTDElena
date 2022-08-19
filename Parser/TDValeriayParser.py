@@ -2,21 +2,26 @@ import logging
 import collections
 import bs4
 import requests
-from Parser import Config
+# from requests.adapters import HTTPAdapter
+# from urllib3.util.retry import Retry
+import Parser.Config.TDValeriayConfig as ConfigTDValeriay
+from Parser.ArticlesFilter import article_filtering
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger('TDValeriya')
 
+company = 'TDVALERIAY'
+
 # To write the parsed data of one card, the data type is used - a named tuple
-product_category_name = 'All_women'
+company_name = company
 ParseResult = collections.namedtuple(
-    product_category_name,
+    company_name,
     (
-        'url',
         'goods_name',
         'article',
         'price',
-        'sizes'
+        'sizes',
+        'url',
     ),
 )
 
@@ -30,8 +35,11 @@ class Parser_TDValeriya:
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)'
                           'Chrome/101.0.4951.67 Safari/537.36'
         }
-        # The main return list that contains named tuples with product data
-        self.result = []
+        # The main return write_list that contains named tuples with product data
+        self.parsing_result = []
+        self.result_tdvaleriay_women = []
+        self.result_tdvaleriay_men = []
+        self.result_tdvaleriay_children = []
 
     # Method that loads a page and returns HTML in a text format
     def load_page(self, url):
@@ -47,58 +55,104 @@ class Parser_TDValeriya:
     # Splitting the page into blocks (cards of a single product)
     def parse_page(self, text: str):
         soup = bs4.BeautifulSoup(text, 'lxml')
-        shope = soup.select_one('section.c-shope')
-        catalog = shope.select_one('div.c-catalog')
-        container = catalog.select('a')
+        catalog = soup.select_one('div.catalog_block')
+        container = catalog.select('div.col-lg-3')
         for block in container:
             self.parse_block(block=block)
 
     # Parsing of each block (cards of a single product)
     def parse_block(self, block):
-        # Get link from attribute href
-        link = 'https://xn--80adfgpq0bk8j.xn--p1ai/'+block.get('href')
+        item_info = block.select_one('div.item_info')
 
-        # Getting data from the card page
-        res_card_inside = self.load_page(link)
-        soup_card_inside = bs4.BeautifulSoup(res_card_inside, 'lxml')
+        item_title = item_info.select_one('div.item-title')
 
-        # Parsing the name from the inner page of the card
-        name = soup_card_inside.select_one('h2.c-offer_title').get_text().strip()
+        link_storage = item_title.select_one('a')
 
-        # Parsing the article from the inner page of the card
-        article = soup_card_inside.select_one('div.c-offer_article').get_text().strip().replace('Артикул: ', '')
+        try:
+            link = 'https://xn--80adfgpq0bk8j.xn--p1ai/'+link_storage.get('href')
+        except AttributeError:
+            link = '-'
 
-        # Parsing prices from the inner page of the card
-        price_mod = soup_card_inside.select_one('div.c-opt.price_mod')
-        price = price_mod.find('span', itemprop='price').get_text().replace(" ", "").strip()
+        try:
+            name = link_storage.select_one('span').get_text().strip()
+        except AttributeError:
+            name = '-'
 
-        # Parsing the size range from the inner page of the card
-        size_mod = soup_card_inside.find('div', id='hide_size_mod')
-        size_checkbox = size_mod.select_one('ul.c-styles.checkbox_mod')
-        sizes_container = size_checkbox.select('label', class_='size_count')
-        sizes = []
-        for size in sizes_container:
-            size = size.find(value='').get_text().strip()
-            sizes.append(size)
+        try:
+            article_block = item_info.select_one('div.article_block')
+            article = article_block.select_one('div.muted').get_text().strip().replace('Арт.: ', '').strip()
+        except AttributeError:
+            article = '-'
+
+        try:
+            info_bottom_block = item_info.select_one('div.item_info--bottom_block')
+            price_wrapper = info_bottom_block.select_one('div.js_price_wrapper')
+            prices = price_wrapper.select_one('div.price').get('data-value').strip()
+        except AttributeError:
+            prices = ['-']
+
+        try:
+            footer_button = block.select_one('div.footer_button')
+            size_checkbox = footer_button.select_one('div.bx_size_scroller_container')
+            sizes_container = size_checkbox.select('li')
+            sizes = []
+            for size in sizes_container:
+                size = size.get('title').strip().replace('Размер: ', '')
+                sizes.append(size)
+        except AttributeError:
+            sizes = ['-']
 
         # Passing all variables, data store parsing individual elements, variable result (named tuple)
-        self.result.append(ParseResult(
-            url=link,
+        self.parsing_result.append(ParseResult(
             goods_name=name,
             article=article,
-            price=price,
-            sizes=sizes
+            price=prices,
+            sizes=sizes,
+            url=link,
         ))
 
-    def run(self):
-        # for url in Config.NatalyFutbolka:
-        text = self.load_page("https://xn--80adfgpq0bk8j.xn--p1ai/products/zhenskij-trikotazh/")
-        self.parse_page(text=text)
-        for card_data in self.result:
-            logger.info(card_data)
-        logger.info(f'Got {len(self.result)} elements')
+    def run_women_parsing(self):
+        for women_url in ConfigTDValeriay.women_urls:
+            for url in women_url:
+                logger.info(url)
+                text = self.load_page(url=url)
+                self.parse_page(text=text)
 
+        article_filtering(parsing_result=self.parsing_result,
+                          category_result=self.result_tdvaleriay_women,
+                          article_data=ConfigTDValeriay.women_articles_dict.values()
+                          )
 
-if __name__ == '__main__':
-    parser = Parser_TDValeriya()
-    parser.run()
+        logger.info('\n'.join(map(str, self.result_tdvaleriay_women)))
+        logger.info(f'Got {len(self.result_tdvaleriay_women)} elements')
+
+    def run_men_parsing(self):
+        for men_url in ConfigTDValeriay.men_urls:
+            for url in men_url:
+                logger.info(url)
+                text = self.load_page(url=url)
+                self.parse_page(text=text)
+
+        logger.info('\n'.join(map(str, self.parsing_result)))
+
+        article_filtering(parsing_result=self.parsing_result,
+                          category_result=self.result_tdvaleriay_men,
+                          article_data=ConfigTDValeriay.men_articles_dict.values()
+                          )
+
+        logger.info('\n'.join(map(str, self.result_tdvaleriay_men)))
+        logger.info(f'Got {len(self.result_tdvaleriay_men)} elements')
+
+    def run_children_parsing(self):
+        for women_url in ConfigTDValeriay.children_urls:
+            for url in women_url:
+                text = self.load_page(url=url)
+                self.parse_page(text=text)
+
+        article_filtering(parsing_result=self.parsing_result,
+                          category_result=self.result_tdvaleriay_children,
+                          article_data=ConfigTDValeriay.children_articles_dict.values())
+
+        logger.info('\n'.join(map(str, self.result_tdvaleriay_children)))
+        logger.info(f'Got {len(self.result_tdvaleriay_children)} elements')
+

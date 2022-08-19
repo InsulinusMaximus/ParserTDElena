@@ -7,8 +7,8 @@ logger = logging.getLogger('Filter')
 def article_filtering(parsing_result, category_result, article_data):
 
     # Checking which article came: if the keys,
-    # then this is the article of TD Elena, and they come in the form of a one-dimensional list,
-    # and in the case of values, they come in the form of a multidimensional list,
+    # then this is the article of TD Elena, and they come in the form of a one-dimensional write_list,
+    # and in the case of values, they come in the form of a multidimensional write_list,
     # where the values are tuples
     article_list = list(article_data)
     if isinstance(article_list[0], tuple):

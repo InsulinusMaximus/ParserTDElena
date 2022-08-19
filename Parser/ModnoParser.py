@@ -30,7 +30,7 @@ class Parser_Modno:
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)'
                           'Chrome/101.0.4951.67 Safari/537.36'
         }
-        # The main return list that contains named tuples with product data
+        # The main return write_list that contains named tuples with product data
         self.result = []
 
     # Method that loads a page and returns HTML in a text format

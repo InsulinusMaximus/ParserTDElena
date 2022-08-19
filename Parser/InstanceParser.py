@@ -30,7 +30,7 @@ class Parser_Instance:
             'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 '
             '(KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36'
         }
-        # The main return list that contains named tuples with product data
+        # The main return write_list that contains named tuples with product data
         self.result = []
 
     # Method that loads a page and returns HTML in a text format
@@ -68,7 +68,7 @@ class Parser_Instance:
         if article in name:
             name = name.replace(article, '').strip()
         # Parsing prices from the inner page of the card
-        price_conteiner = soup_card_inside.select_one('ul.list-unstyled.price-container')
+        price_conteiner = soup_card_inside.select_one('ul.write_list-unstyled.price-container')
         try:
             price = price_conteiner.select_one('meta', itemprop="price").get('content')
         except AttributeError:

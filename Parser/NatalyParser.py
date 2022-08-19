@@ -33,7 +33,7 @@ class Parser_Nataly:
             'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 '
             '(KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36'
         }
-        # The main return list that contains named tuples with product data
+        # The main return write_list that contains named tuples with product data
         self.parsing_result = []
         self.result_nataly_women = []
         self.result_nataly_men = []
@@ -127,9 +127,9 @@ class Parser_Nataly:
         if not sizes_productcard:
             logger.error('No sizes table')
             return
-        # 4 lvl. Getting all sizes and saving to a list
+        # 4 lvl. Getting all sizes and saving to a write_list
         try:
-            sizes = sizes_productcard.select_one('ul.sizes__list.list').get_text().split()
+            sizes = sizes_productcard.select_one('ul.sizes__list.write_list').get_text().split()
         except AttributeError:
             sizes = ['-']
 

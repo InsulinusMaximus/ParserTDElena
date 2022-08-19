@@ -37,7 +37,7 @@ class Parser_Beloshveika:
         self.adapter = HTTPAdapter(max_retries=self.retry)
         self.session.mount('http://', self.adapter)
         self.session.mount('https://', self.adapter)
-        # The main return list that contains named tuples with product data
+        # The main return write_list that contains named tuples with product data
         self.result = []
 
     # Method that loads a page and returns HTML in a text format

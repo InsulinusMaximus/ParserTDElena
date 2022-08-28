@@ -2,21 +2,24 @@ import logging
 import collections
 import bs4
 import requests
-import re
+import Parser.Config.InstanceConfig as ConfigInstance
+from Parser.ArticlesFilter import article_filtering
 
-logging.basicConfig(level=logging.INFO)
+logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger('Instance')
 
+company = 'INSTANCE'
+
 # To write the parsed data of one card, the data type is used - a named tuple
-product_category_name = 'Футболки'
+company_name = company
 ParseResult = collections.namedtuple(
-    product_category_name,
+    company_name,
     (
-        'url',
         'goods_name',
         'article',
         'price',
-        'sizes'
+        'sizes',
+        'url',
     ),
 )
 
@@ -31,7 +34,10 @@ class Parser_Instance:
             '(KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36'
         }
         # The main return write_list that contains named tuples with product data
-        self.result = []
+        self.parsing_result = []
+        self.result_instance_women = []
+        self.result_instance_men = []
+        self.result_instance_children = []
 
     # Method that loads a page and returns HTML in a text format
     def load_page(self, url):
@@ -47,34 +53,41 @@ class Parser_Instance:
     # Splitting the page into blocks (cards of a single product)
     def parse_page(self, text: str):
         soup = bs4.BeautifulSoup(text, 'lxml')
-        container = soup.select('div.product-layout')
+        catalog = soup.select_one('div.bbry-catalog__list')
+        container = catalog.select('div.bbry-product-card')
         for block in container:
             self.parse_block(block=block)
 
     def parse_block(self, block):
-        card_caption = block.select_one('div.caption')
-        product_title = card_caption.select_one('a.dv-product-title')
-        link = product_title.get('href')
-        name = product_title.get_text().strip()
-
-        # Getting data from the card page
-        res_card_inside = self.load_page(link)
-        soup_card_inside = bs4.BeautifulSoup(res_card_inside, 'lxml')
+        try:
+            title = block.select_one('a')
+            link = title.get('href').strip()
+            name = title.get_text().strip()
+        except AttributeError:
+            link = '-'
+            name = '-'
 
         # Parsing the article from the inner page of the card
-        article = soup_card_inside.select_one('li.article-product').text
-        article = re.sub(r'Артикул:', '', article).strip()
-        # Deletion from the name of the article
-        if article in name:
-            name = name.replace(article, '').strip()
-        # Parsing prices from the inner page of the card
-        price_conteiner = soup_card_inside.select_one('ul.write_list-unstyled.price-container')
+        card_body = block.select_one('div.bbry-product-card__body')
+
         try:
-            price = price_conteiner.select_one('meta', itemprop="price").get('content')
+            article_container = card_body.select_one('div.bbry-product-card__vendor-code')
+            article = article_container.select_one('span.vendor-code__value').get_text().strip()
         except AttributeError:
-            price = price_conteiner.select_one('span.newprice').get_text().strip().replace(' руб.', '')
+            article = '-'
+
+        try:
+            price_container = card_body.select_one('div.bbry-product-card__price')
+            price = price_container.select_one('span').get_text().strip().replace(' руб.', '')
+        except AttributeError:
+            price = '-'
+
+        # Getting data from the card page
+        card_inside = self.load_page(link)
+        soup_card_inside = bs4.BeautifulSoup(card_inside, 'lxml')
+
         # Parsing the size range from the inner page of the card
-        sizes_container = soup_card_inside.select_one('div.form-group.required')
+        sizes_container = soup_card_inside.select_one('div.txt-block__filters')
         sizes_group = sizes_container.select('option')
         sizes = []
         for size in sizes_group:
@@ -86,26 +99,53 @@ class Parser_Instance:
                 sizes.append(size)
 
         # Passing all variables, data store parsing individual elements, variable result (named tuple)
-        self.result.append(ParseResult(
-            url=link,
+        self.parsing_result.append(ParseResult(
             goods_name=name,
             article=article,
             price=price,
-            sizes=sizes
+            sizes=sizes,
+            url=link,
         ))
 
-    def run(self):
-        # for url in Config.NatalyFutbolka:
-        text = self.load_page(url='https://instanceshop.ru/bridzhi/')
-        self.parse_page(text=text)
-        # for card_data in self.result:
-        # logger.info(card_data)
-        # logger.info(f'Got {len(self.result)} elements')
+    def run_women_parsing(self):
+        for women_url in ConfigInstance.women_urls:
+            for url in women_url:
+                logger.info(url)
+                text = self.load_page(url=url)
+                self.parse_page(text=text)
 
+        article_filtering(parsing_result=self.parsing_result,
+                          category_result=self.result_instance_women,
+                          article_data=ConfigInstance.women_articles_dict.values()
+                          )
 
-if __name__ == '__main__':
-    parser = Parser_Instance()
-    parser.run()
+        logger.info('\n'.join(map(str, self.result_instance_women)))
+        logger.info(f'Got {len(self.result_instance_women)} elements')
 
-    for i in parser.result:
-        print(i[1])
+    def run_men_parsing(self):
+        for men_url in ConfigInstance.men_urls:
+            for url in men_url:
+                logger.info(url)
+                text = self.load_page(url=url)
+                self.parse_page(text=text)
+
+        article_filtering(parsing_result=self.parsing_result,
+                          category_result=self.result_instance_men,
+                          article_data=ConfigInstance.men_articles_dict.values()
+                          )
+
+        logger.info('\n'.join(map(str, self.result_instance_men)))
+        logger.info(f'Got {len(self.result_instance_men)} elements')
+
+    def run_children_parsing(self):
+        for women_url in ConfigInstance.children_urls:
+            for url in women_url:
+                text = self.load_page(url=url)
+                self.parse_page(text=text)
+
+        article_filtering(parsing_result=self.parsing_result,
+                          category_result=self.result_instance_children,
+                          article_data=ConfigInstance.children_articles_dict.values())
+
+        logger.info('\n'.join(map(str, self.result_instance_children)))
+        logger.info(f'Got {len(self.result_instance_children)} elements')

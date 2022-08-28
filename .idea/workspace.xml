@@ -5,58 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8b5e3739-27ac-4daf-990a-ef2548e6115a" name="Changes" comment="First commit">
-      <change afterPath="$PROJECT_DIR$/Parser/Config/ModnoConfig.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Parser/Config/InstanceConfig.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Result_in_CSV_format/MEN_parsing_from_28.08.2022-22.37..csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Result_in_CSV_format/Parsing_from_28.08.2022-17.45..csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parser/ModnoParser.py" beforeDir="false" afterPath="$PROJECT_DIR$/Parser/ModnoParser.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parser/NatalyParser.py" beforeDir="false" afterPath="$PROJECT_DIR$/Parser/NatalyParser.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parser/OddisParcer.py" beforeDir="false" afterPath="$PROJECT_DIR$/Parser/OddisParcer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parsing_from_2022.08.09-12.35.59.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parsing_from_2022.08.09-12.46.09.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parsing_from_2022.08.20-01.40.31.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parsing_from_2022.08.23-11.58.04.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/aefb.py" beforeDir="false" afterPath="$PROJECT_DIR$/aefb.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Parser/InstanceParser.py" beforeDir="false" afterPath="$PROJECT_DIR$/Parser/InstanceParser.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Result_in_CSV_formatParsing_from_28.08.2022-00.34..csv" beforeDir="false" afterPath="$PROJECT_DIR$/Result_in_CSV_format/Parsing_from_28.08.2022-12.44..csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/repository.py" beforeDir="false" afterPath="$PROJECT_DIR$/repository.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/service.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_save20220627-092858.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_save20220627-092858.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_save20220711-101329.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_save20220717-222645.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_save20220718-151033.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_save20220718-152643.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_save20220718-154530.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_save20220718-160402.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_save20220718-161018.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_save20220718-161929.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_save20220718-162827.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_save20220718-163319.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_save20220718-163947.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_save20220718-164927.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_save20220718-165225.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_save20220718-174503.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_save20220718-181512.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_save20220721-173736.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_save20220721-175526.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_save20220721-180245.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_save20220721-180918.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_save20220721-181442.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_save20220721-190530.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_save20220721-192237.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_save20220721-193443.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_save20220721-195737.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_save20220721-201704.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_save20220721-225704.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_save20220721-233111.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_save20220721-233536.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_save20220722-184136.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_save20220722-193642.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_save20220722-203949.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_save20220723-124305.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_save20220723-161828.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_save20220723-162129.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_save20220723-185852.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_save20220726-124446.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_save_TDElena.csv" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,12 +42,15 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="28AF3YS8K1RNNSZMXX7ITwxUvta" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="ToolWindowGit.ShowToolbar" value="false" />
@@ -222,9 +182,9 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.main" />
+        <item itemvalue="Python.InstanceParser" />
         <item itemvalue="Python.aefb" />
         <item itemvalue="Python.ModnoParser" />
-        <item itemvalue="Python.InstanceParser" />
         <item itemvalue="Python.OddisParcer" />
       </list>
     </recent_temporary>
@@ -334,7 +294,8 @@
       <workItem from="1661077644050" duration="4320000" />
       <workItem from="1661244076657" duration="2958000" />
       <workItem from="1661364073779" duration="5802000" />
-      <workItem from="1661621724716" duration="5830000" />
+      <workItem from="1661621724716" duration="11833000" />
+      <workItem from="1661695344517" duration="3430000" />
     </task>
     <task id="LOCAL-00001" summary="First commit">
       <created>1651867377911</created>
@@ -361,6 +322,7 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="First commit" />
     <option name="LAST_COMMIT_MESSAGE" value="First commit" />
   </component>
@@ -381,8 +343,8 @@
     <SUITE FILE_PATH="coverage/ParserTDElena$ArticlesFilter.coverage" NAME="ArticlesFilter Coverage Results" MODIFIED="1659956521907" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Parser" />
     <SUITE FILE_PATH="coverage/TDElenaParser$config.coverage" NAME="config Coverage Results" MODIFIED="1652981298755" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/ParserTDElena$Instance.coverage" NAME="Instance Coverage Results" MODIFIED="1653647905876" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Parser" />
-    <SUITE FILE_PATH="coverage/ParserTDElena$main.coverage" NAME="main Coverage Results" MODIFIED="1661671206923" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/ParserTDElena$InstanceParser.coverage" NAME="InstanceParser Coverage Results" MODIFIED="1661246622476" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Parser" />
+    <SUITE FILE_PATH="coverage/ParserTDElena$main.coverage" NAME="main Coverage Results" MODIFIED="1661715335455" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/ParserTDElena$InstanceParser.coverage" NAME="InstanceParser Coverage Results" MODIFIED="1661686804727" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Parser" />
     <SUITE FILE_PATH="coverage/ParserTDElena$OddisParcer.coverage" NAME="OddisParcer Coverage Results" MODIFIED="1661077963428" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Parser" />
     <SUITE FILE_PATH="coverage/ParserTDElena$wdfbv.coverage" NAME="wdfbv Coverage Results" MODIFIED="1657526976815" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/ParserTDElena$Test.coverage" NAME="Test Coverage Results" MODIFIED="1654107976263" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Parser" />

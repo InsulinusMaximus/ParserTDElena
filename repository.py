@@ -26,10 +26,13 @@ HEADERS = (
     'Артикул Модно',
     'Цена Модно',
     'Ссылка на артикул Модно',
+    'Артикул Инстанс',
+    'Цена Инстанс',
+    'Ссылка на артикул Инстанс',
 )
 
 
-def directory_creation():
+def directory_creation(category):
     """
     Need to create a directory to write the created CSV file into it and return the path to it,
     if the directory is already created on the device, then just return the path to it
@@ -39,24 +42,24 @@ def directory_creation():
     try:
         os.mkdir('Result_in_CSV_format')
         os.chdir('Result_in_CSV_format')
-        return str(os.getcwd()).replace('\\', '/') + f'/Parsing_from_{datetime.now().strftime("%d.%m.%Y-%H.%M.")}.csv'
+        return str(os.getcwd()).replace('\\',
+                                        '/') + f'/{category}_parsing_from_{datetime.now().strftime("%d.%m.%Y-%H.%M.")}.csv'
     except OSError:
         os.chdir('Result_in_CSV_format')
-        return str(os.getcwd()).replace('\\', '/') + f'/Parsing_from_{datetime.now().strftime("%d.%m.%Y-%H.%M.")}.csv'
+        return str(os.getcwd()).replace('\\', '/') + f'/{category}_parsing_from_{datetime.now().strftime("%d.%m.%Y-%H.%M.")}.csv'
 
 
 class Repository:
 
     @staticmethod
-    def save_general_data(write_list):
-        path = directory_creation()
-        pathOLD = f'C:/Users/Pavel/PycharmProjects/TDElenaParser/Result_in_CSV_format/Parsing_from_{datetime.now().strftime("%d.%m.%Y-%H.%M.")}.csv'
+    def save_general_data(write_list, category):
+        path = directory_creation(category)
         with open(path, 'w', encoding="utf-8", newline="") as f:
             writer = csv.writer(f, quoting=csv.QUOTE_MINIMAL, delimiter=';')
             writer.writerow(HEADERS)
             for item in write_list:
                 writer.writerow(item)
 
-    def run(self, final_list):
-        self.save_general_data(final_list)
+    def run(self, final_list, category):
+        self.save_general_data(final_list, category)
         logger.info('__________Saved to repository___________')

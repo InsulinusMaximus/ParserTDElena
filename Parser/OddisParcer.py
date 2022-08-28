@@ -82,7 +82,6 @@ class Parser_Oddis:
 
         try:
             sizes = block.select_one('div.catalog-size').get_text().replace('Размер: ', '').split('-')
-            print(type(sizes))
             if type(sizes) is list and len(sizes) >= 2:
                 size = [i + 2 for i in range(int(sizes[0]), int(sizes[1]) - 1)]
             else:

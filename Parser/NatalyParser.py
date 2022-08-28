@@ -164,8 +164,6 @@ class Parser_Nataly:
                 text = self.load_page(url=url)
                 self.parse_page(text=text)
 
-        logger.info('\n'.join(map(str, self.parsing_result)))
-
         article_filtering(parsing_result=self.parsing_result,
                           category_result=self.result_nataly_men,
                           article_data=ConfigNataly.men_articles_dict.values()

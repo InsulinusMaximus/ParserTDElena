@@ -1,1 +1,8 @@
-
+*.log
+*.pot
+*.pyc
+__pycache__/
+aefb.py
+save.py
+storing_in_columns.py
+Result_in_CSV_format/

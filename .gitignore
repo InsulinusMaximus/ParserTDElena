@@ -1,5 +1,4 @@
 __pycache__/
-venv/
 # intellij configs
 .idea/
 # folder with parsing results files

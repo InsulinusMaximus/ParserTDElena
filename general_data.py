@@ -1,4 +1,4 @@
-from dataclasses import dataclass, astuple
+from dataclasses import dataclass
 from typing import Any
 
 
@@ -13,6 +13,18 @@ class general_data:
     gomany_articles: Any = ''
     gomany_prices: Any = ''
     gomany_links: Any = ''
+    td_valeriay_articles: Any = ''
+    td_valeriay_prices: Any = ''
+    td_valeriay_links: Any = ''
+    oddis_articles: Any = ''
+    oddis_prices: Any = ''
+    oddis_links: Any = ''
+    modno_articles: Any = ''
+    modno_prices: Any = ''
+    modno_links: Any = ''
+    instance_articles: Any = ''
+    instance_prices: Any = ''
+    instance_links: Any = ''
 
 
 

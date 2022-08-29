@@ -5,14 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8b5e3739-27ac-4daf-990a-ef2548e6115a" name="Changes" comment="First commit">
-      <change afterPath="$PROJECT_DIR$/Parser/Config/InstanceConfig.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Result_in_CSV_format/MEN_parsing_from_28.08.2022-22.37..csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Result_in_CSV_format/Parsing_from_28.08.2022-17.45..csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Result_in_CSV_format/Result_in_CSV_format/MEN_parsing_from_29.08.2022-15.58..csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Result_in_CSV_format/WOMEN_parsing_from_29.08.2022-15.56..csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parser/InstanceParser.py" beforeDir="false" afterPath="$PROJECT_DIR$/Parser/InstanceParser.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Result_in_CSV_formatParsing_from_28.08.2022-00.34..csv" beforeDir="false" afterPath="$PROJECT_DIR$/Result_in_CSV_format/Parsing_from_28.08.2022-12.44..csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/general_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/general_data.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/repository.py" beforeDir="false" afterPath="$PROJECT_DIR$/repository.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/service.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -295,7 +293,9 @@
       <workItem from="1661244076657" duration="2958000" />
       <workItem from="1661364073779" duration="5802000" />
       <workItem from="1661621724716" duration="11833000" />
-      <workItem from="1661695344517" duration="3430000" />
+      <workItem from="1661695344517" duration="3472000" />
+      <workItem from="1661775243495" duration="680000" />
+      <workItem from="1661777104603" duration="2089000" />
     </task>
     <task id="LOCAL-00001" summary="First commit">
       <created>1651867377911</created>
@@ -343,7 +343,7 @@
     <SUITE FILE_PATH="coverage/ParserTDElena$ArticlesFilter.coverage" NAME="ArticlesFilter Coverage Results" MODIFIED="1659956521907" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Parser" />
     <SUITE FILE_PATH="coverage/TDElenaParser$config.coverage" NAME="config Coverage Results" MODIFIED="1652981298755" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/ParserTDElena$Instance.coverage" NAME="Instance Coverage Results" MODIFIED="1653647905876" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Parser" />
-    <SUITE FILE_PATH="coverage/ParserTDElena$main.coverage" NAME="main Coverage Results" MODIFIED="1661715335455" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/ParserTDElena$main.coverage" NAME="main Coverage Results" MODIFIED="1661777109796" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/ParserTDElena$InstanceParser.coverage" NAME="InstanceParser Coverage Results" MODIFIED="1661686804727" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Parser" />
     <SUITE FILE_PATH="coverage/ParserTDElena$OddisParcer.coverage" NAME="OddisParcer Coverage Results" MODIFIED="1661077963428" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Parser" />
     <SUITE FILE_PATH="coverage/ParserTDElena$wdfbv.coverage" NAME="wdfbv Coverage Results" MODIFIED="1657526976815" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />

@@ -1,7 +1,5 @@
-*.log
-*.pot
-*.pyc
 __pycache__/
+.venv
 aefb.py
 save.py
 storing_in_columns.py

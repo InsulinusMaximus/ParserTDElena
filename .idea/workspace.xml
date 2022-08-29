@@ -5,7 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8b5e3739-27ac-4daf-990a-ef2548e6115a" name="Changes" comment="First commit">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Result_in_CSV_format/MEN_parsing_from_28.08.2022-22.37..csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Result_in_CSV_format/Parsing_from_27.08.2022-21.12..csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Result_in_CSV_format/Parsing_from_28.08.2022-10.31..csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Result_in_CSV_format/Parsing_from_28.08.2022-12.44..csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Result_in_CSV_format/Parsing_from_28.08.2022-17.45..csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Result_in_CSV_format/Result_in_CSV_format/MEN_parsing_from_29.08.2022-15.58..csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Result_in_CSV_format/WOMEN_parsing_from_29.08.2022-15.56..csv" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/aefb.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/repository.py" beforeDir="false" afterPath="$PROJECT_DIR$/repository.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/save.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/storing_in_columns.py" beforeDir="false" />
     </list>
@@ -292,7 +301,7 @@
       <workItem from="1661621724716" duration="11833000" />
       <workItem from="1661695344517" duration="3472000" />
       <workItem from="1661775243495" duration="680000" />
-      <workItem from="1661777104603" duration="2893000" />
+      <workItem from="1661777104603" duration="3233000" />
     </task>
     <task id="LOCAL-00001" summary="First commit">
       <created>1651867377911</created>

@@ -38,17 +38,19 @@ def directory_creation(category):
     if the directory is already created on the device, then just return the path to it
     """
     current_directory = str(os.getcwd())
-    print(current_directory)
+    if 'Result_in_CSV_format' in current_directory.split('\\'):
+        return current_directory.replace('\\',
+                                         '/') + f'/{category}_parsing_from_{datetime.now().strftime("%d.%m.%Y-%H.%M.")}.csv'
+
     try:
         os.mkdir('Result_in_CSV_format')
-        if 'Result_in_CSV_format' in current_directory.split('\\'):
-            raise Exception(OSError)
         os.chdir('Result_in_CSV_format')
         return str(os.getcwd()).replace('\\',
                                         '/') + f'/{category}_parsing_from_{datetime.now().strftime("%d.%m.%Y-%H.%M.")}.csv'
     except OSError:
         os.chdir('Result_in_CSV_format')
-        return str(os.getcwd()).replace('\\', '/') + f'/{category}_parsing_from_{datetime.now().strftime("%d.%m.%Y-%H.%M.")}.csv'
+        return str(os.getcwd()).replace('\\',
+                                        '/') + f'/{category}_parsing_from_{datetime.now().strftime("%d.%m.%Y-%H.%M.")}.csv'
 
 
 class Repository:
@@ -57,7 +59,7 @@ class Repository:
     def save_general_data(write_list, category):
         path = directory_creation(category)
         with open(path, 'w', encoding="utf-8", newline="") as f:
-            writer = csv.writer(f, quoting=csv.QUOTE_MINIMAL, delimiter=';')
+            writer = csv.writer(f, quoting=csv.QUOTE_MINIMAL, delimiter=';', dialect='excel')
             writer.writerow(HEADERS)
             for item in write_list:
                 writer.writerow(item)

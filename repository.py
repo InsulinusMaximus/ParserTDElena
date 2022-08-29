@@ -38,10 +38,10 @@ def directory_creation(category):
     if the directory is already created on the device, then just return the path to it
     """
     current_directory = str(os.getcwd())
-    print(type(current_directory))
+    print(current_directory)
     try:
         os.mkdir('Result_in_CSV_format')
-        if current_directory == 'Result_in_CSV_format':
+        if 'Result_in_CSV_format' in current_directory.split('\\'):
             raise Exception(OSError)
         os.chdir('Result_in_CSV_format')
         return str(os.getcwd()).replace('\\',

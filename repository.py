@@ -41,6 +41,8 @@ def directory_creation(category):
     print(type(current_directory))
     try:
         os.mkdir('Result_in_CSV_format')
+        if current_directory == 'Result_in_CSV_format':
+            raise Exception(OSError)
         os.chdir('Result_in_CSV_format')
         return str(os.getcwd()).replace('\\',
                                         '/') + f'/{category}_parsing_from_{datetime.now().strftime("%d.%m.%Y-%H.%M.")}.csv'

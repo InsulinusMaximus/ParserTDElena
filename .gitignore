@@ -1,5 +1,5 @@
 __pycache__/
-.venv
+venv/
 aefb.py
 save.py
 storing_in_columns.py

@@ -1,6 +1,9 @@
 __pycache__/
 venv/
-aefb.py
-save.py
-storing_in_columns.py
+# intellij configs
+.idea/
+# folder with parsing results files
 Result_in_CSV_format/
+
+
+

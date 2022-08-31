@@ -1,3 +1,4 @@
+# coding: utf-8
 import logging
 import collections
 import bs4
@@ -5,10 +6,11 @@ import requests
 import Parser.Config.OddisConfig as ConfigOddis
 from Parser.ArticlesFilter import article_filtering
 
-logging.basicConfig(level=logging.DEBUG)
-logger = logging.getLogger('Oddis')
-
 company = 'ODDIS'
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(company)
+
 
 # To write the parsed data of one card, the data type is used - a named tuple
 company_name = company
@@ -41,6 +43,7 @@ class Parser_Oddis:
 
     # Method that loads a page and returns HTML in a text format
     def load_page(self, url):
+        logger.info(f'Connection attempt:{url}')
         try:
             res = self.session.get(url=url)
             res.raise_for_status()
@@ -53,8 +56,13 @@ class Parser_Oddis:
     # Splitting the page into blocks (cards of a single product)
     def parse_page(self, text: str):
         soup = bs4.BeautifulSoup(text, 'lxml')
-        all_cards = soup.select_one('ul.cat_ul')
-        container = all_cards.select('li')
+        try:
+            all_cards = soup.select_one('ul.cat_ul')
+            container = all_cards.select('li')
+        except AttributeError:
+            logger.info('There are no required attributes on the page')
+            return None
+
         for block in container:
             self.parse_block(block=block)
 
@@ -101,34 +109,32 @@ class Parser_Oddis:
     def run_women_parsing(self):
         for women_url in ConfigOddis.women_urls:
             for url in women_url:
-                logger.info(url)
                 text = self.load_page(url=url)
                 self.parse_page(text=text)
+
+        logger.info(f'Got {len(self.parsing_result)} elements WOMEN category')
 
         article_filtering(parsing_result=self.parsing_result,
                           category_result=self.result_oddis_women,
                           article_data=ConfigOddis.women_articles_dict.values()
                           )
 
-        logger.info('\n'.join(map(str, self.result_oddis_women)))
-        logger.info(f'Got {len(self.result_oddis_women)} elements')
+        # logger.info('\n'.join(map(str, self.result_oddis_women)))
 
     def run_men_parsing(self):
         for men_url in ConfigOddis.men_urls:
             for url in men_url:
-                logger.info(url)
                 text = self.load_page(url=url)
                 self.parse_page(text=text)
 
-        logger.info('\n'.join(map(str, self.parsing_result)))
+        logger.info(f'Got {len(self.parsing_result)} elements MEN category')
 
         article_filtering(parsing_result=self.parsing_result,
                           category_result=self.result_oddis_men,
                           article_data=ConfigOddis.men_articles_dict.values()
                           )
 
-        logger.info('\n'.join(map(str, self.result_oddis_men)))
-        logger.info(f'Got {len(self.result_oddis_men)} elements')
+        # logger.info('\n'.join(map(str, self.result_oddis_men)))
 
     def run_children_parsing(self):
         for women_url in ConfigOddis.children_urls:
@@ -136,9 +142,11 @@ class Parser_Oddis:
                 text = self.load_page(url=url)
                 self.parse_page(text=text)
 
+        logger.info(f'Got {len(self.parsing_result)} elements CHILDREN category')
+
         article_filtering(parsing_result=self.parsing_result,
                           category_result=self.result_oddis_children,
                           article_data=ConfigOddis.children_articles_dict.values())
 
-        logger.info('\n'.join(map(str, self.result_oddis_children)))
-        logger.info(f'Got {len(self.result_oddis_children)} elements')
+        # logger.info('\n'.join(map(str, self.result_oddis_children)))
+

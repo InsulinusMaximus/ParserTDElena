@@ -1,11 +1,10 @@
 import logging
 import collections
 import bs4
-import time
 import requests
 from requests.adapters import HTTPAdapter
 from requests.packages.urllib3.util.retry import Retry
-from Parser import Config
+
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger('Beloshveika')

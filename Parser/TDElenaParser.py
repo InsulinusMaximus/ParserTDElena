@@ -1,14 +1,15 @@
+# coding: utf-8
 import logging
 import collections
 import bs4
 import requests
 import Parser.Config.TDElenaConfig as ConfigTDElena
 
-
-logging.basicConfig(level=logging.DEBUG)
-logger = logging.getLogger('TDElena')
-
 company = 'TDElena'
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(company)
+
 
 # To write the parsed data of one card, the data type is used - a named tuple
 company_name = company
@@ -41,6 +42,7 @@ class Parser_TDElena:
 
     # Method that loads a page and returns HTML in a text format
     def load_page(self, url):
+        logger.info(f'Connection attempt:{url}')
         try:
             res = self.session.get(url=url)
             res.raise_for_status()
@@ -133,24 +135,27 @@ class Parser_TDElena:
     def run_women_parsing(self):
         for women_url in ConfigTDElena.women_urls:
             for url in women_url:
-                logger.info(url)
                 text = self.load_page(url=url)
                 self.parse_page(text=text)
 
-        logger.info('\n'.join(map(str, self.result_tdelena_women)))
+        # logger.info('\n'.join(map(str, self.result_tdelena_women)))
+        logger.info(f'Got {len(self.parsing_result)} elements WOMEN category')
 
     def run_men_parsing(self):
         for men_url in ConfigTDElena.men_urls:
             for url in men_url:
-                logger.info(url)
                 text = self.load_page(url=url)
                 self.parse_page(text=text)
 
-        logger.info('\n'.join(map(str, self.parsing_result)))
+        # logger.info('\n'.join(map(str, self.result_tdelena_men)))
+        logger.info(f'Got {len(self.parsing_result)} elements MEN category')
 
     def run_children_parsing(self):
-        for women_url in ConfigTDElena.children_urls:
-            for url in women_url:
+        for children_url in ConfigTDElena.children_urls:
+            for url in children_url:
                 text = self.load_page(url=url)
                 self.parse_page(text=text)
+
+        # logger.info('\n'.join(map(str, self.result_tdelena_children)))
+        logger.info(f'Got {len(self.parsing_result)} elements CHILDREN category')
 

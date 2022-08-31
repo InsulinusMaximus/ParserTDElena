@@ -1,3 +1,4 @@
+# coding: utf-8
 import logging
 import collections
 import bs4
@@ -5,8 +6,8 @@ import requests
 import Parser.Config.GomanyConfig as ConfigGomany
 from Parser.ArticlesFilter import article_filtering
 
-logging.basicConfig(level=logging.DEBUG)
-logger = logging.getLogger('Gomany')
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger('GOMANY')
 
 company = 'GOMANY'
 
@@ -41,6 +42,7 @@ class Parser_Gomany:
 
     # Method that loads a page and returns HTML in a text format
     def load_page(self, url):
+        logger.info(f'Connection attempt:{url}')
         try:
             res = self.session.get(url=url)
             res.raise_for_status()
@@ -53,7 +55,12 @@ class Parser_Gomany:
     # Splitting the page into blocks (cards of a single product)
     def parse_page(self, text: str):
         soup = bs4.BeautifulSoup(text, 'lxml')
-        container = soup.select('li.product.type-product')
+        try:
+            container = soup.select('li.product.type-product')
+        except AttributeError:
+            logger.info('There are no required attributes on the page')
+            return None
+
         for block in container:
             self.parse_block(block=block)
 
@@ -96,46 +103,46 @@ class Parser_Gomany:
     def run_women_parsing(self):
         for women_url in ConfigGomany.women_urls:
             for url in women_url:
-                logger.info(url)
                 text = self.load_page(url=url)
                 self.parse_page(text=text)
+
+        logger.info(f'Got {len(self.parsing_result)} elements WOMEN category')
 
         article_filtering(parsing_result=self.parsing_result,
                           category_result=self.result_gomany_women,
                           article_data=ConfigGomany.women_articles_dict.values()
                           )
 
-        logger.info('\n'.join(map(str, self.result_gomany_women)))
-        logger.info(f'Got {len(self.result_gomany_women)} elements')
+        # logger.info('\n'.join(map(str, self.result_gomany_women)))
 
     def run_men_parsing(self):
         for men_url in ConfigGomany.men_urls:
             for url in men_url:
-                logger.info(url)
                 text = self.load_page(url=url)
                 self.parse_page(text=text)
 
-        logger.info('\n'.join(map(str, self.parsing_result)))
+        logger.info(f'Got {len(self.parsing_result)} elements MEN category')
 
         article_filtering(parsing_result=self.parsing_result,
                           category_result=self.result_gomany_men,
                           article_data=ConfigGomany.men_articles_dict.values()
                           )
 
-        logger.info('\n'.join(map(str, self.result_gomany_men)))
-        logger.info(f'Got {len(self.result_gomany_men)} elements')
+        # logger.info('\n'.join(map(str, self.result_gomany_men)))
 
     def run_children_parsing(self):
-        for women_url in ConfigGomany.children_urls:
-            for url in women_url:
+        for children_url in ConfigGomany.children_urls:
+            for url in children_url:
                 text = self.load_page(url=url)
                 self.parse_page(text=text)
+
+        logger.info(f'Got {len(self.parsing_result)} elements CHILDREN category')
 
         article_filtering(parsing_result=self.parsing_result,
                           category_result=self.result_gomany_children,
                           article_data=ConfigGomany.children_articles_dict.values())
 
-        logger.info('\n'.join(map(str, self.result_gomany_children)))
-        logger.info(f'Got {len(self.result_gomany_children)} elements')
+        # logger.info('\n'.join(map(str, self.result_gomany_children)))
+
 
 

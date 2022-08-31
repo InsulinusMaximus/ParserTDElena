@@ -1,3 +1,4 @@
+# coding: utf-8
 import logging
 import collections
 import bs4
@@ -5,10 +6,11 @@ import requests
 import Parser.Config.InstanceConfig as ConfigInstance
 from Parser.ArticlesFilter import article_filtering
 
-logging.basicConfig(level=logging.DEBUG)
-logger = logging.getLogger('Instance')
-
 company = 'INSTANCE'
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(company)
+
 
 # To write the parsed data of one card, the data type is used - a named tuple
 company_name = company
@@ -41,6 +43,7 @@ class Parser_Instance:
 
     # Method that loads a page and returns HTML in a text format
     def load_page(self, url):
+        logger.info(f'Connection attempt:{url}')
         try:
             res = self.session.get(url=url)
             res.raise_for_status()
@@ -53,8 +56,13 @@ class Parser_Instance:
     # Splitting the page into blocks (cards of a single product)
     def parse_page(self, text: str):
         soup = bs4.BeautifulSoup(text, 'lxml')
-        catalog = soup.select_one('div.bbry-catalog__list')
-        container = catalog.select('div.bbry-product-card')
+        try:
+            catalog = soup.select_one('div.bbry-catalog__list')
+            container = catalog.select('div.bbry-product-card')
+        except AttributeError:
+            logger.info('There are no required attributes on the page')
+            return None
+
         for block in container:
             self.parse_block(block=block)
 
@@ -110,32 +118,32 @@ class Parser_Instance:
     def run_women_parsing(self):
         for women_url in ConfigInstance.women_urls:
             for url in women_url:
-                logger.info(url)
                 text = self.load_page(url=url)
                 self.parse_page(text=text)
+
+        logger.info(f'Got {len(self.parsing_result)} elements WOMEN category')
 
         article_filtering(parsing_result=self.parsing_result,
                           category_result=self.result_instance_women,
                           article_data=ConfigInstance.women_articles_dict.values()
                           )
 
-        logger.info('\n'.join(map(str, self.result_instance_women)))
-        logger.info(f'Got {len(self.result_instance_women)} elements')
+        # logger.info('\n'.join(map(str, self.result_instance_women)))
 
     def run_men_parsing(self):
         for men_url in ConfigInstance.men_urls:
             for url in men_url:
-                logger.info(url)
                 text = self.load_page(url=url)
                 self.parse_page(text=text)
+
+        logger.info(f'Got {len(self.parsing_result)} elements MEN category')
 
         article_filtering(parsing_result=self.parsing_result,
                           category_result=self.result_instance_men,
                           article_data=ConfigInstance.men_articles_dict.values()
                           )
 
-        logger.info('\n'.join(map(str, self.result_instance_men)))
-        logger.info(f'Got {len(self.result_instance_men)} elements')
+        # logger.info('\n'.join(map(str, self.result_instance_men)))
 
     def run_children_parsing(self):
         for women_url in ConfigInstance.children_urls:
@@ -143,9 +151,11 @@ class Parser_Instance:
                 text = self.load_page(url=url)
                 self.parse_page(text=text)
 
+        logger.info(f'Got {len(self.parsing_result)} elements CHILDREN category')
+
         article_filtering(parsing_result=self.parsing_result,
                           category_result=self.result_instance_children,
                           article_data=ConfigInstance.children_articles_dict.values())
 
-        logger.info('\n'.join(map(str, self.result_instance_children)))
-        logger.info(f'Got {len(self.result_instance_children)} elements')
+        # logger.info('\n'.join(map(str, self.result_instance_children)))
+

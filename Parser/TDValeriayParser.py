@@ -1,16 +1,16 @@
+# coding: utf-8
 import logging
 import collections
 import bs4
 import requests
-# from requests.adapters import HTTPAdapter
-# from urllib3.util.retry import Retry
 import Parser.Config.TDValeriayConfig as ConfigTDValeriay
 from Parser.ArticlesFilter import article_filtering
 
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger('TDValeriya')
-
 company = 'TDVALERIAY'
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(company)
+
 
 # To write the parsed data of one card, the data type is used - a named tuple
 company_name = company
@@ -43,6 +43,7 @@ class Parser_TDValeriya:
 
     # Method that loads a page and returns HTML in a text format
     def load_page(self, url):
+        logger.info(f'Connection attempt:{url}')
         try:
             res = self.session.get(url=url)
             res.raise_for_status()
@@ -55,8 +56,13 @@ class Parser_TDValeriya:
     # Splitting the page into blocks (cards of a single product)
     def parse_page(self, text: str):
         soup = bs4.BeautifulSoup(text, 'lxml')
-        catalog = soup.select_one('div.catalog_block')
-        container = catalog.select('div.col-lg-3')
+        try:
+            catalog = soup.select_one('div.catalog_block')
+            container = catalog.select('div.col-lg-3')
+        except AttributeError:
+            logger.info('There are no required attributes on the page')
+            return None
+
         for block in container:
             self.parse_block(block=block)
 
@@ -69,7 +75,7 @@ class Parser_TDValeriya:
         link_storage = item_title.select_one('a')
 
         try:
-            link = 'https://xn--80adfgpq0bk8j.xn--p1ai/'+link_storage.get('href')
+            link = 'https://tdvaleria.ru'+link_storage.get('href')
         except AttributeError:
             link = '-'
 
@@ -114,34 +120,32 @@ class Parser_TDValeriya:
     def run_women_parsing(self):
         for women_url in ConfigTDValeriay.women_urls:
             for url in women_url:
-                logger.info(url)
                 text = self.load_page(url=url)
                 self.parse_page(text=text)
+
+        logger.info(f'Got {len(self.parsing_result)} elements WOMEN category')
 
         article_filtering(parsing_result=self.parsing_result,
                           category_result=self.result_tdvaleriay_women,
                           article_data=ConfigTDValeriay.women_articles_dict.values()
                           )
 
-        logger.info('\n'.join(map(str, self.result_tdvaleriay_women)))
-        logger.info(f'Got {len(self.result_tdvaleriay_women)} elements')
+        # logger.info('\n'.join(map(str, self.result_tdvaleriay_women)))
 
     def run_men_parsing(self):
         for men_url in ConfigTDValeriay.men_urls:
             for url in men_url:
-                logger.info(url)
                 text = self.load_page(url=url)
                 self.parse_page(text=text)
 
-        logger.info('\n'.join(map(str, self.parsing_result)))
+        logger.info(f'Got {len(self.parsing_result)} elements MEN category')
 
         article_filtering(parsing_result=self.parsing_result,
                           category_result=self.result_tdvaleriay_men,
                           article_data=ConfigTDValeriay.men_articles_dict.values()
                           )
 
-        logger.info('\n'.join(map(str, self.result_tdvaleriay_men)))
-        logger.info(f'Got {len(self.result_tdvaleriay_men)} elements')
+        # logger.info('\n'.join(map(str, self.result_tdvaleriay_men)))
 
     def run_children_parsing(self):
         for women_url in ConfigTDValeriay.children_urls:
@@ -149,10 +153,12 @@ class Parser_TDValeriya:
                 text = self.load_page(url=url)
                 self.parse_page(text=text)
 
+        logger.info(f'Got {len(self.parsing_result)} elements CHILDREN category')
+
         article_filtering(parsing_result=self.parsing_result,
                           category_result=self.result_tdvaleriay_children,
                           article_data=ConfigTDValeriay.children_articles_dict.values())
 
-        logger.info('\n'.join(map(str, self.result_tdvaleriay_children)))
-        logger.info(f'Got {len(self.result_tdvaleriay_children)} elements')
+        # logger.info('\n'.join(map(str, self.result_tdvaleriay_children)))
+
 

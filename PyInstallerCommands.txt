@@ -1,0 +1,1 @@
+pyinstaller main.py -n 'TDElena_price_parser' -F --clean --distpath ./win_parser_app --clean --specpath ./win_parser_app/build --workpath ./win_parser_app/build --icon "C:\Users\Pavel\PycharmProjects\TDElenaParser\TDElena_logo.ico"

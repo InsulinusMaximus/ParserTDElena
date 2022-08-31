@@ -1,3 +1,4 @@
+# coding: utf-8
 from service import Service
 
 if __name__ == '__main__':
@@ -9,7 +10,6 @@ if __name__ == '__main__':
     # Men
     service.run_men_service()
 
-    # TEST
 
 
 

@@ -40,17 +40,17 @@ def directory_creation(category):
     current_directory = str(os.getcwd())
     if 'Result_in_CSV_format' in current_directory.split('\\'):
         return current_directory.replace('\\',
-                                         '/') + f'/{category}_parsing_from_{datetime.now().strftime("%d.%m.%Y-%H.%M.")}.csv'
+                                         '/') + f'/{category}_parsing_from_{datetime.now().strftime("%d.%m.%Y-%H.%M")}.csv'
 
     try:
         os.mkdir('Result_in_CSV_format')
         os.chdir('Result_in_CSV_format')
         return str(os.getcwd()).replace('\\',
-                                        '/') + f'/{category}_parsing_from_{datetime.now().strftime("%d.%m.%Y-%H.%M.")}.csv'
+                                        '/') + f'/{category}_parsing_from_{datetime.now().strftime("%d.%m.%Y-%H.%M")}.csv'
     except OSError:
         os.chdir('Result_in_CSV_format')
         return str(os.getcwd()).replace('\\',
-                                        '/') + f'/{category}_parsing_from_{datetime.now().strftime("%d.%m.%Y-%H.%M.")}.csv'
+                                        '/') + f'/{category}_parsing_from_{datetime.now().strftime("%d.%m.%Y-%H.%M")}.csv'
 
 
 class Repository:
@@ -63,7 +63,7 @@ class Repository:
             writer.writerow(HEADERS)
             for item in write_list:
                 writer.writerow(item)
+        print(f'__________{category} category was saved in csv file__________')
 
     def run(self, final_list, category):
         self.save_general_data(final_list, category)
-        logger.info('__________Saved to repository___________')

@@ -1,4 +1,3 @@
-# coding: utf-8
 import collections
 
 # TD Elena
@@ -153,7 +152,6 @@ category_url = collections.namedtuple(
         'tolstovki',
         'kostyumy',
         'futbolky',
-
         'bryuki',
         'halaty',
         'shorty',

@@ -5,8 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8b5e3739-27ac-4daf-990a-ef2548e6115a" name="Changes" comment="First commit">
-      <change afterPath="$PROJECT_DIR$/win_parser_app_v.0.1.zip" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Parser/ArticlesFilter.py" beforeDir="false" afterPath="$PROJECT_DIR$/Parser/ArticlesFilter.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Parser/Config/GomanyConfig.py" beforeDir="false" afterPath="$PROJECT_DIR$/Parser/Config/GomanyConfig.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Parser/Config/InstanceConfig.py" beforeDir="false" afterPath="$PROJECT_DIR$/Parser/Config/InstanceConfig.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Parser/Config/ModnoConfig.py" beforeDir="false" afterPath="$PROJECT_DIR$/Parser/Config/ModnoConfig.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Parser/Config/NatalyConfig.py" beforeDir="false" afterPath="$PROJECT_DIR$/Parser/Config/NatalyConfig.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Parser/Config/OddisConfig.py" beforeDir="false" afterPath="$PROJECT_DIR$/Parser/Config/OddisConfig.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Parser/Config/TDElenaConfig.py" beforeDir="false" afterPath="$PROJECT_DIR$/Parser/Config/TDElenaConfig.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Parser/Config/TDValeriayConfig.py" beforeDir="false" afterPath="$PROJECT_DIR$/Parser/Config/TDValeriayConfig.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Parser/GomanyParser.py" beforeDir="false" afterPath="$PROJECT_DIR$/Parser/GomanyParser.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Parser/InstanceParser.py" beforeDir="false" afterPath="$PROJECT_DIR$/Parser/InstanceParser.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Parser/ModnoParser.py" beforeDir="false" afterPath="$PROJECT_DIR$/Parser/ModnoParser.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Parser/NatalyParser.py" beforeDir="false" afterPath="$PROJECT_DIR$/Parser/NatalyParser.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Parser/OddisParcer.py" beforeDir="false" afterPath="$PROJECT_DIR$/Parser/OddisParcer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Parser/TDElenaParser.py" beforeDir="false" afterPath="$PROJECT_DIR$/Parser/TDElenaParser.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Parser/TDValeriayParser.py" beforeDir="false" afterPath="$PROJECT_DIR$/Parser/TDValeriayParser.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/general_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/general_data.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/service.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -294,7 +311,8 @@
       <workItem from="1661775243495" duration="680000" />
       <workItem from="1661777104603" duration="11019000" />
       <workItem from="1661869203636" duration="2075000" />
-      <workItem from="1661948043649" duration="11508000" />
+      <workItem from="1661948043649" duration="12251000" />
+      <workItem from="1661964833331" duration="1502000" />
     </task>
     <task id="LOCAL-00001" summary="First commit">
       <created>1651867377911</created>
@@ -343,7 +361,7 @@
     <SUITE FILE_PATH="coverage/TDElenaParser$config.coverage" NAME="config Coverage Results" MODIFIED="1652981298755" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/ParserTDElena$pyinstaller.coverage" NAME="pyinstaller Coverage Results" MODIFIED="1661958518290" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/ParserTDElena$Instance.coverage" NAME="Instance Coverage Results" MODIFIED="1653647905876" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Parser" />
-    <SUITE FILE_PATH="coverage/ParserTDElena$main.coverage" NAME="main Coverage Results" MODIFIED="1661958524466" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/ParserTDElena$main.coverage" NAME="main Coverage Results" MODIFIED="1661967737415" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/ParserTDElena$InstanceParser.coverage" NAME="InstanceParser Coverage Results" MODIFIED="1661686804727" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Parser" />
     <SUITE FILE_PATH="coverage/ParserTDElena$OddisParcer.coverage" NAME="OddisParcer Coverage Results" MODIFIED="1661077963428" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Parser" />
     <SUITE FILE_PATH="coverage/ParserTDElena$wdfbv.coverage" NAME="wdfbv Coverage Results" MODIFIED="1657526976815" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />

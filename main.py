@@ -1,4 +1,3 @@
-# coding: utf-8
 from service import Service
 
 if __name__ == '__main__':

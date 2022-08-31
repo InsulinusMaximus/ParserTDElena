@@ -1,4 +1,3 @@
-# coding: utf-8
 from dataclasses import astuple
 from general_data import general_data as general_data
 from Parser import TDElenaParser, NatalyParser, GomanyParser, TDValeriayParser, OddisParcer, ModnoParser, InstanceParser
